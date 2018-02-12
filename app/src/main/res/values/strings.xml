@@ -1,0 +1,167 @@
+<resources>
+    <string name="app_name">GitanoApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- nombre de los productos -->
+    <string name="producto_nombre_caliente">Caliente</string>
+    <string name="producto_nombre_fria">Fria</string>
+    <string name="producto_nombre_naturales">Natural</string>
+    <string name="producto_nombre_desayuno">Deasyunos</string>
+    <string name="producto_nombre_clasico">Claiscos</string>
+    <string name="producto_nombre_healthy">Healthy</string>
+    <string name="producto_nombre_postre">Postres</string>
+
+    <!-- descripciones -->
+    <string name="producto_desp_caliente">Descipcion comida caliente</string>
+    <string name="producto_desp_fria">Descipcion comida fria</string>
+    <string name="producto_desp_naturales">Descipcion comida natural</string>
+    <string name="producto_desp_desayuno">Descipcion d deasyunos</string>
+    <string name="producto_desp_clasico">Descipcion de claiscos</string>
+    <string name="producto_desp_healthy">Descipcion de healthy</string>
+    <string name="producto_desp_postre">Descipcion de postres</string>
+
+    <!-- Comida Caliente -->
+    <string name="caliente_americano">Americano</string>
+    <string name="caliente_cappuccino">Cappuccino</string>
+    <string name="caliente_caramel_latte">Caramel Latte</string>
+    <string name="caliente_chocolate">Chocolate</string>
+    <string name="caliente_cochaccino">Cochaccino</string>
+    <string name="caliente_latte">Latte</string>
+    <string name="caliente_mocha">Mocha</string>
+    <string name="caliente_te_chai">Té Chai</string>
+
+    <!-- Descripcion Comida Caliente -->
+    <string name="desp_americano">Descripcion Americano</string>
+    <string name="desp_cappuccino">Descripcion Cappuccino</string>
+    <string name="desp_caramel_latte">Descripcion Caramel Latte</string>
+    <string name="desp_chocolate">Descripcion Chocolate</string>
+    <string name="desp_cochaccino">Descripcion Cochaccino</string>
+    <string name="desp_latte">Descripcion Latte</string>
+    <string name="desp_mocha">Descripcion Mocha</string>
+    <string name="desp_te_chai">Descripcion Té Chai</string>
+
+    <!-- Comida Fria -->
+    <string name="fria_dream_granita">Dream Granita</string>
+    <string name="fria_granita_cafe">Granita Cafe</string>
+    <string name="fria_granita_frutas">Granita Frutas</string>
+    <string name="fria_horchata">Horchata</string>
+    <string name="fria_jamaica">Jamaica</string>
+    <string name="fria_jugo_naranja">Jugo De Naranjas</string>
+    <string name="fria_latte_frio">Latte Frio</string>
+    <string name="fria_tamarindo">Tamarindo</string>
+    <string name="fria_te_frio">Té Frio</string>
+
+    <!-- Descripcion Comida Fria -->
+    <string name="desp_dream_granita">Dream Granita</string>
+    <string name="desp_granita_cafe">Granita Cafe</string>
+    <string name="desp_granita_frutas">Granita Frutase</string>
+    <string name="desp_horchata">Descripcion Horchata</string>
+    <string name="desp_jamaica">Descripcion Jamaica</string>
+    <string name="desp_jugo_naranja">Descripcion Jugo De Naranjas</string>
+    <string name="desp_latte_frio">Descripcion Latte Frio</string>
+    <string name="desp_tamarindo">DescripcionTamarindo</string>
+    <string name="desp_te_frio">Descripcion Té Frio</string>
+
+    <!-- Comida Natural -->
+    <string name="natural_berry_cool">Berry Cool</string>
+    <string name="natural_booster">Booster</string>
+    <string name="natural_early_bird">Early Bird</string>
+    <string name="natural_magic">Magic</string>
+    <string name="natural_shine">Shine</string>
+    <string name="natural_tropical">Tropical</string>
+    <string name="natural_vanilla_ice">Vanilla Ice</string>
+    <string name="natural_veggie">Veggie</string>
+
+    <!-- Descripcion Comida Natural -->
+    <string name="desc_natural_berry_cool">Descripcion Berry Cool</string>
+    <string name="desc_natural_booster">Descripcion Booster</string>
+    <string name="desc_natural_early_bird">Descripcion Early Bird</string>
+    <string name="desc_natural_magic">Descripcion Magic</string>
+    <string name="desc_natural_shine">Descripcion Shine</string>
+    <string name="desc_natural_tropical">Descripcion Tropical</string>
+    <string name="desc_natural_vanilla_ice">Descripcion Vanilla Ice</string>
+    <string name="desc_natural_veggie">Descripcion Veggie</string>
+
+    <!-- Comida Desayuno -->
+    <string name="desayuno_bagel">Bagel</string>
+    <string name="desayuno_bocadillo">Bocadillo</string>
+    <string name="desayuno_chicken_quesadilla">Chicken Quesadilla</string>
+    <string name="desayuno_latbread">Latbread</string>
+    <string name="desayuno_muffin">Muffin</string>
+    <string name="desayuno_muffin_ranchero">Muffin Ranchero</string>
+    <string name="desayuno_torta_gitane">Torta Gitane</string>
+
+    <!-- Descripcion Comida Desayuno -->
+    <string name="desc_desayuno_bagel">Descripcion Bagel</string>
+    <string name="desc_desayuno_bocadillo">Descripcion Bocadillo</string>
+    <string name="desc_desayuno_chicken_quesadilla">Descripcion Chicken Quesadilla</string>
+    <string name="desc_desayuno_latbread">Descripcion Latbread</string>
+    <string name="desc_desayuno_muffin">Descripcion Muffin</string>
+    <string name="desc_desayuno_muffin_ranchero">Descripcion Muffin Ranchero</string>
+    <string name="desc_desayuno_torta_gitane">Descripcion Torta Gitane</string>
+
+    <!-- Comida Desayuno -->
+    <string name="clasicos_blt_gitane">BLT Gitane</string>
+    <string name="clasicos_chicken_cheddar">Chicken Cheddar</string>
+    <string name="clasicos_chicken_chimichuri">Chicken Chimichurri</string>
+    <string name="clasicos_citano_de_jamon">Citano de Jamon</string>
+    <string name="clasicos_citano_de_pollo">Citano de Pollo</string>
+    <string name="clasicos_croissant">Croissant</string>
+    <string name="clasicos_sandwich_caprece">Sandwich Caprece</string>
+
+    <!-- descripcion Comida Desayuno -->
+    <string name="desc_clasicos_blt_gitane">Descripcion BLT Gitane</string>
+    <string name="desc_clasicos_chicken_cheddar">Descripcion Chicken Cheddar</string>
+    <string name="desc_clasicos_chicken_chimichuri">Descripcion Chicken Chimichurri</string>
+    <string name="desc_clasicos_citano_de_jamon">Descripcion Citano de Jamon</string>
+    <string name="desc_clasicos_citano_de_pollo">Descripcion Citano de Pollo</string>
+    <string name="desc_clasicos_croissant">Descripcion Croissant</string>
+    <string name="desc_clasicos_sandwich_caprece">Descripcion Sandwich Caprece</string>
+
+    <!-- Comida Healthy -->
+    <string name="healthy_cesar_wrap">Cesar Wrap</string>
+    <string name="healthy_ensalada_cesar">Ensalada Cesar</string>
+    <string name="healthy_emsalada_chicken_mustrad">Ensalada Chicken Mustrad</string>
+    <string name="healthy_ensalada_veggie">Ensalada Veggie</string>
+    <string name="healthy_ensalada_verano">Ensalada Verano</string>
+    <string name="healthy_sandwich_jardinero">Sandwich Jardinero</string>
+    <string name="healthy_sandwinh_vegetariano">Sandwich Vegetariano</string>
+
+    <!-- Descripcion Comida Healthy -->
+    <string name="desc_healthy_cesar_wrap">Descripcion Cesar Wrap</string>
+    <string name="desc_healthy_ensalada_cesar">Descripcion Ensalada Cesar</string>
+    <string name="desc_healthy_emsalada_chicken_mustrad">Descripcion Ensalada Chicken Mustrad</string>
+    <string name="desc_healthy_ensalada_veggie">Descripcion Ensalada Veggie</string>
+    <string name="desc_healthy_ensalada_verano">Descripcion Ensalada Verano</string>
+    <string name="desc_healthy_sandwich_jardinero">Descripcion Sandwich Jardinero</string>
+    <string name="desc_healthy_sandwinh_vegetariano">Descripcion Sandwich Vegetariano</string>
+
+    <!-- Comida Postres -->
+    <string name="postres_brazo_gitano">Brazo Gitano</string>
+    <string name="postres_brownie">Brownie</string>
+    <string name="postres_galletas">Galletas</string>
+    <string name="postres_gipsy">Gipsy</string>
+    <string name="postres_naked_cake_ch">Naked Cake CH</string>
+    <string name="postres_pastel_de_moka">Pastel De Moka</string>
+    <string name="postres_pie_de_queso">Pie de Queso</string>
+    <string name="postres_zepelin">Zepelin</string>
+
+    <!-- Descipcion Comida Postres -->
+    <string name="desc_postres_brazo_gitano">Descipcon Brazo Gitano</string>
+    <string name="desc_postres_brownie">Descipcon Brownie</string>
+    <string name="desc_postres_galletas">Descipcon Galletas</string>
+    <string name="desc_postres_gipsy">Descipcon Gipsy</string>
+    <string name="desc_postres_naked_cake_ch">Descipcon Naked Cake CH</string>
+    <string name="desc_postres_pastel_de_moka">Descipcon Pastel De Moka</string>
+    <string name="desc_postres_pie_de_queso">Descipcon Pie de Queso</string>
+    <string name="desc_postres_zepelin">Descipcon Zepelin</string>
+    <string name="tienda">Tienda</string>
+</resources>

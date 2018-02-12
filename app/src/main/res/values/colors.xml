@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#740049</color>
+    <color name="colorPrimaryDark">#43032b</color>
+    <color name="probar">#a4b2be</color>
+    <color name="colorAccent">#1D2D3D</color>
+    <color name="text">#f17d10</color>
+    <color name="black">#000</color>
+
+    <!--Paleta de coleres Gitane-->
+    <color name="color1">#ED2246</color>
+    <color name="background">#003461</color>
+    <color name="background_navigation">#740049</color>
+    <color name="cartitas">#e9e2d5</color>
+    <color name="fuente">#ffffff</color>
+</resources>
