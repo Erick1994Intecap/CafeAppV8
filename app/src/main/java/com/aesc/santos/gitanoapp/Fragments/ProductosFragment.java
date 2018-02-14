@@ -110,20 +110,20 @@ public class ProductosFragment extends Fragment {
         recyclerProductos.setLayoutManager(new LinearLayoutManager(getContext()));
 
         final ArrayList androidVersions = prepareData();
-        DataAdapter adapter = new DataAdapter(getContext(),androidVersions);
+        DataAdapter adapter = new DataAdapter(getContext(), androidVersions);
         recyclerProductos.setAdapter(adapter);
 
 
         //AdaptadorProductos adapter = new AdaptadorProductos(listaProductos);
 
-    recyclerProductos.setAdapter(adapter);
-    adapter.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            interfaceComunicaFragments.enviarProducto(recyclerProductos.getChildAdapterPosition(view));
-            //Toast.makeText(getContext(), "Selecc"+androidVersions.get(recyclerProductos.getChildAdapterPosition(view)), Toast.LENGTH_SHORT).show();
-        }
-    });
+        //recyclerProductos.setAdapter(adapter);
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                interfaceComunicaFragments.enviarProducto(recyclerProductos.getChildAdapterPosition(view));
+
+            }
+        });
 
         return view;
     }
@@ -131,7 +131,7 @@ public class ProductosFragment extends Fragment {
     private ArrayList prepareData() {
 
         ArrayList android_version = new ArrayList<>();
-        for(int i=0;i<android_version_names.length;i++){
+        for (int i = 0; i < android_version_names.length; i++) {
             AndroidVersion androidVersion = new AndroidVersion();
             androidVersion.setAndroid_version_name(android_version_names[i]);
             androidVersion.setAndroid_image_url(android_image_urls[i]);
@@ -162,7 +162,7 @@ public class ProductosFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (context instanceof Activity){
+        if (context instanceof Activity) {
             this.activity = (Activity) context;
             interfaceComunicaFragments = (IComunicaFragments) this.activity;
         }

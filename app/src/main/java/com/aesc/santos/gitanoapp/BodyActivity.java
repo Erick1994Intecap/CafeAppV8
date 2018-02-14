@@ -18,30 +18,34 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
+import com.aesc.santos.gitanoapp.Entidades.Tiendaszona;
 import com.aesc.santos.gitanoapp.Fragments.NotificacionesFragment;
 import com.aesc.santos.gitanoapp.Fragments.ProductoDetalleFragment;
 import com.aesc.santos.gitanoapp.Fragments.ProductosFragment;
 import com.aesc.santos.gitanoapp.Fragments.PromocionesFragment;
 import com.aesc.santos.gitanoapp.Fragments.PuntosFragment;
+import com.aesc.santos.gitanoapp.Fragments.TiendaDetalleFragment;
 import com.aesc.santos.gitanoapp.Fragments.TiendaFragment;
 import com.aesc.santos.gitanoapp.Intefaces.IComunicaFragments;
 
 import java.util.ArrayList;
 
-public class BodyActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,
+public class BodyActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener,
         NotificacionesFragment.OnFragmentInteractionListener,
         ProductosFragment.OnFragmentInteractionListener,
         PromocionesFragment.OnFragmentInteractionListener,
         PuntosFragment.OnFragmentInteractionListener,
-        TiendaFragment.OnFragmentInteractionListener, IComunicaFragments {
+        TiendaFragment.OnFragmentInteractionListener,
+        IComunicaFragments {
 
 
     private static final String TAG = "BodyActivity";
 
+    TiendaDetalleFragment mTiendaFragmentDetalle;
     ProductoDetalleFragment mProductoDetalleFragment;
     PuntosFragment mPuntosFragment;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +64,7 @@ public class BodyActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         mPuntosFragment = new PuntosFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,mPuntosFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, mPuntosFragment).commit();
     }
 
 
@@ -85,33 +89,33 @@ public class BodyActivity extends AppCompatActivity
 
         if (id == R.id.productos) {
             miFragment = new ProductosFragment();
-            fragmentSeleccionado=true;
+            fragmentSeleccionado = true;
             Log.d(TAG, "onNavigationItemSelected: ProductosFragment");
         } else if (id == R.id.tienda) {
             miFragment = new TiendaFragment();
-            fragmentSeleccionado=true;
+            fragmentSeleccionado = true;
             Log.d(TAG, "onNavigationItemSelected: TiendaFragment");
         } else if (id == R.id.punto) {
             miFragment = new PuntosFragment();
-            fragmentSeleccionado=true;
+            fragmentSeleccionado = true;
             Log.d(TAG, "onNavigationItemSelected: PuntoFragment");
         } else if (id == R.id.promociones) {
             miFragment = new PromocionesFragment();
-            fragmentSeleccionado=true;
+            fragmentSeleccionado = true;
             Log.d(TAG, "onNavigationItemSelected: PromocinesFragment");
         } else if (id == R.id.favoritos) {
             miFragment = new NotificacionesFragment();
-            fragmentSeleccionado=true;
+            fragmentSeleccionado = true;
             Log.d(TAG, "onNavigationItemSelected: NotificacionesFragment");
         } else if (id == R.id.logOut) {
-            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
         } else if (id == R.id.siguenos) {
             Toast.makeText(this, "Siguenos", Toast.LENGTH_SHORT).show();
         }
 
-        if (fragmentSeleccionado==true){
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,miFragment).commit();
+        if (fragmentSeleccionado == true) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, miFragment).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -132,8 +136,20 @@ public class BodyActivity extends AppCompatActivity
         bundleEnvio.putInt("key", position);
         mProductoDetalleFragment.setArguments(bundleEnvio);
 
+
         //Toast.makeText(this, "ver" + bundleEnvio.toString(), Toast.LENGTH_SHORT).show();
         //Cargar el fragmente en el activity
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,mProductoDetalleFragment).addToBackStack(null).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, mProductoDetalleFragment).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void enviarZonas(int position) {
+        //48464654
+        mTiendaFragmentDetalle = new TiendaDetalleFragment();
+        Bundle bundleEnvio = new Bundle();
+        bundleEnvio.putInt("key", position);
+        mTiendaFragmentDetalle.setArguments(bundleEnvio);
+        Toast.makeText(this, "ver" + bundleEnvio.toString(), Toast.LENGTH_LONG).show();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, mTiendaFragmentDetalle).addToBackStack(null).commit();
     }
 }
