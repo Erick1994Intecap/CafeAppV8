@@ -7,17 +7,26 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-//import com.aesc.santos.gitanoapp.Adaptadores.AdaptadorProductos;
-import com.aesc.santos.gitanoapp.Adaptadores.DataAdapter;
+import com.aesc.santos.gitanoapp.Adaptadores.CategoriasProducto;
 import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
-import com.aesc.santos.gitanoapp.Entidades.ProductosVo;
 import com.aesc.santos.gitanoapp.Intefaces.IComunicaFragments;
 import com.aesc.santos.gitanoapp.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -29,24 +38,15 @@ import java.util.ArrayList;
  * Use the {@link ProductosFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProductosFragment extends Fragment {
-    private final String android_version_names[] = {
-            "Bebidas Calientes",
-            "Bebidas Frías",
-            "Bebidas Naturales",
-            "Desayunos",
-            "Clásicos",
-            "Healthy",
-            "Postres"
-    };
+public class ProductosFragment extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject> {
 
     private final String android_image_urls[] = {
             "http://adrax.hol.es/img_caffe/Bebidas%20Calientes/Americano.png",
             "http://adrax.hol.es/img_caffe/Bebidas%20Frias/Dream%20Granita.png",
-            "http://adrax.hol.es/img_caffe/Cla%CC%81sicos/Croissant.png",
-            "http://adrax.hol.es/img_caffe/Desayunos/Bocadillo.png",
-            "http://adrax.hol.es/img_caffe/Healthy/Ce%CC%81sar%20Wrap.png",
             "http://adrax.hol.es/img_caffe/Naturals/Booster.png",
+            "http://adrax.hol.es/img_caffe/Desayunos/Bocadillo.png",
+            "http://adrax.hol.es/img_caffe/Cla%CC%81sicos/Croissant.png",
+            "http://adrax.hol.es/img_caffe/Healthy/Ce%CC%81sar%20Wrap.png",
             "http://adrax.hol.es/img_caffe/Postres/Galletas.png"
     };
     // TODO: Rename parameter arguments, choose names that match
@@ -62,8 +62,11 @@ public class ProductosFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    ArrayList<AndroidVersion> androidVersions;
+    ArrayList<AndroidVersion> listCategorias;
     RecyclerView recyclerProductos;
+
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
 
     Activity activity;
     IComunicaFragments interfaceComunicaFragments;
@@ -72,15 +75,6 @@ public class ProductosFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProductosFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ProductosFragment newInstance(String param1, String param2) {
         ProductosFragment fragment = new ProductosFragment();
         Bundle args = new Bundle();
@@ -105,51 +99,84 @@ public class ProductosFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_productos, container, false);
 
-        androidVersions = new ArrayList<>();
+        listCategorias = new ArrayList<>();
+        
         recyclerProductos = view.findViewById(R.id.recyclerid);
         recyclerProductos.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerProductos.setHasFixedSize(true);
+        
+        request = Volley.newRequestQueue(getContext());
+        
+        cargarWebService();
 
-        final ArrayList androidVersions = prepareData();
-        DataAdapter adapter = new DataAdapter(getContext(), androidVersions);
+        /*final ArrayList listCategorias = prepareData();
+        CategoriasProducto adapter = new CategoriasProducto(getContext(),listCategorias);
         recyclerProductos.setAdapter(adapter);
 
 
         //AdaptadorProductos adapter = new AdaptadorProductos(listaProductos);
 
-        //recyclerProductos.setAdapter(adapter);
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                interfaceComunicaFragments.enviarProducto(recyclerProductos.getChildAdapterPosition(view));
-
-            }
-        });
+    recyclerProductos.setAdapter(adapter);
+    adapter.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            interfaceComunicaFragments.enviarProducto(recyclerProductos.getChildAdapterPosition(view));
+            //Toast.makeText(getContext(), "Selecc"+listCategorias.get(recyclerProductos.getChildAdapterPosition(view)), Toast.LENGTH_SHORT).show();
+        }
+    });*/
 
         return view;
     }
 
-    private ArrayList prepareData() {
+    private void cargarWebService() {
+        String url = "http://192.168.22.37/gitane/wsJSONConsultarLista.php";
 
-        ArrayList android_version = new ArrayList<>();
-        for (int i = 0; i < android_version_names.length; i++) {
-            AndroidVersion androidVersion = new AndroidVersion();
-            androidVersion.setAndroid_version_name(android_version_names[i]);
-            androidVersion.setAndroid_image_url(android_image_urls[i]);
-            android_version.add(androidVersion);
-        }
-        return android_version;
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
+        request.add(jsonObjectRequest);
     }
 
-   /* private void llenarListaProductos() {
-        listaProductos.add(new ProductosVo(getString(R.string.producto_nombre_caliente),getString(R.string.producto_desp_caliente),R.drawable.caliente));
-        listaProductos.add(new ProductosVo(getString(R.string.producto_nombre_fria),getString(R.string.producto_desp_fria),R.drawable.fria));
-        listaProductos.add(new ProductosVo(getString(R.string.producto_nombre_naturales),getString(R.string.producto_desp_naturales),R.drawable.natural));
-        listaProductos.add(new ProductosVo(getString(R.string.producto_nombre_desayuno),getString(R.string.producto_desp_desayuno),R.drawable.desayuno));
-        listaProductos.add(new ProductosVo(getString(R.string.producto_nombre_clasico),getString(R.string.producto_desp_clasico),R.drawable.clasica));
-        listaProductos.add(new ProductosVo(getString(R.string.producto_nombre_healthy),getString(R.string.producto_desp_healthy),R.drawable.healthy));
-        listaProductos.add(new ProductosVo(getString(R.string.producto_nombre_postre),getString(R.string.producto_desp_postre),R.drawable.postre));
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(activity, "No se pudo conectar " + error.toString(), Toast.LENGTH_SHORT).show();
+        System.out.println();
+        Log.d(TAG, "onErrorResponse: " + error.toString());
+    }
 
-    }*/
+    @Override
+    public void onResponse(JSONObject response) {
+        AndroidVersion categoria = null;
+
+        JSONArray json = response.optJSONArray("datos");
+
+        try {
+            for (int i = 0; i< json.length(); i++){
+                categoria = new AndroidVersion();
+                JSONObject jsonObject = null;
+
+                jsonObject = json.getJSONObject(i);
+
+                categoria.setAndroid_version_name(jsonObject.optString("name"));
+                categoria.setAndroid_image_url(android_image_urls[i]);
+
+                listCategorias.add(categoria);
+            }
+
+            CategoriasProducto adapter = new CategoriasProducto(getContext(),listCategorias);
+            recyclerProductos.setAdapter(adapter);
+
+            adapter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    interfaceComunicaFragments.enviarProducto(recyclerProductos.getChildAdapterPosition(view));
+                    //Toast.makeText(getContext(), "Selecc"+listCategorias.get(recyclerProductos.getChildAdapterPosition(view)), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(activity, "Error al momento de cargar las Categorias.", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -162,7 +189,7 @@ public class ProductosFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (context instanceof Activity) {
+        if (context instanceof Activity){
             this.activity = (Activity) context;
             interfaceComunicaFragments = (IComunicaFragments) this.activity;
         }

@@ -9,15 +9,16 @@ import java.io.Serializable;
 public class ProductosVo implements Serializable{
     private String nombre;
     private String descripcion;
-    private int imageid;
+    private String precio;
+
 
     public ProductosVo() {
     }
 
-    public ProductosVo(String nombre, String descripcion, int imageid) {
+    public ProductosVo(String nombre, String descripcion, String precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.imageid = imageid;
+        this.precio = precio;
     }
 
     public String getNombre() {
@@ -36,11 +37,20 @@ public class ProductosVo implements Serializable{
         this.descripcion = descripcion;
     }
 
-    public int getImageid() {
-        return imageid;
+    public String getPrecio() {
+        return precio;
     }
 
-    public void setImageid(int imageid) {
-        this.imageid = imageid;
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductosVo{" +
+                "nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio='" + precio + '\'' +
+                '}';
     }
 }

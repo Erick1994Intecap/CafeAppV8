@@ -30,7 +30,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ic_start"
-                android:layout_marginLeft="30dp"/>
+                android:layout_margin="5dp"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -42,7 +42,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="Nombre Producto"
-                    android:textAlignment="center"
                     android:textColor="#000"
                     android:textSize="20sp"
                     android:textStyle="bold" />

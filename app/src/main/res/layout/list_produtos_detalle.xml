@@ -9,7 +9,8 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_degratitions">
 
         <ImageView
             android:id="@+id/idImage"
@@ -37,6 +38,7 @@
             android:id="@+id/tvDescripcion"
             android:layout_below="@+id/tvNombre"
             android:layout_alignLeft="@+id/tvNombre" />
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
@@ -48,6 +50,7 @@
         </View>
 
         <TextView
+            android:id="@+id/precio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Precio: Q.7.00"
