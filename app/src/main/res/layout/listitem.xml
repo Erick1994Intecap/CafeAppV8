@@ -29,7 +29,6 @@
                 android:id="@+id/idImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_start"
                 android:layout_margin="5dp"/>
 
             <RelativeLayout
