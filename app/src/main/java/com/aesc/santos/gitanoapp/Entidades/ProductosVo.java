@@ -10,15 +10,16 @@ public class ProductosVo implements Serializable{
     private String nombre;
     private String descripcion;
     private String precio;
-
+    public String image_url;
 
     public ProductosVo() {
     }
 
-    public ProductosVo(String nombre, String descripcion, String precio) {
+    public ProductosVo(String nombre, String descripcion, String precio, String image_url) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.image_url = image_url;
     }
 
     public String getNombre() {
@@ -45,12 +46,21 @@ public class ProductosVo implements Serializable{
         this.precio = precio;
     }
 
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
     @Override
     public String toString() {
         return "ProductosVo{" +
                 "nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", precio='" + precio + '\'' +
+                ", image_url='" + image_url + '\'' +
                 '}';
     }
 }

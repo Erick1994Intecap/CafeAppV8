@@ -104,6 +104,7 @@ public class ProductoDetalleFragment extends Fragment implements Response.Listen
         if (position == 0){
             Log.d(TAG, "onCreateView: Comida Caliente.");
             key = 1;
+
             //siSeleccionEsCaliente();
         }else if (position == 1){
             Log.d(TAG, "onCreateView: Comida Fria");
@@ -169,11 +170,12 @@ public class ProductoDetalleFragment extends Fragment implements Response.Listen
                 producto.setNombre(jsonObject.optString("name"));
                 producto.setDescripcion(jsonObject.optString("description"));
                 producto.setPrecio(jsonObject.optString("precio"));
+                producto.setImage_url(jsonObject.optString("imagen_url"));
 
                 listaProductos.add(producto);
             }
 
-            CategoriasProductoDetalle adapter = new CategoriasProductoDetalle(listaProductos);
+            CategoriasProductoDetalle adapter = new CategoriasProductoDetalle(getContext(),listaProductos);
             recyclerProductos.setAdapter(adapter);
 
         } catch (JSONException e) {

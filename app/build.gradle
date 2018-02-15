@@ -31,9 +31,7 @@ dependencies {
     //Circle Image
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
-    //RecyclerView and Cardview fdo
-    //compile 'com.android.support:cardview-v7:26.1.0'
-    //compile 'com.android.support:recyclerview-v7:26.1.0'
+    //RecyclerView and Cardview
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
 

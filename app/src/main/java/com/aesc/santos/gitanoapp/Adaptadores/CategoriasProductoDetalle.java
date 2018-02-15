@@ -1,6 +1,7 @@
 package com.aesc.santos.gitanoapp.Adaptadores;
 
 import android.animation.Animator;
+import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.aesc.santos.gitanoapp.Entidades.ProductosVo;
 import com.aesc.santos.gitanoapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -23,9 +25,11 @@ import java.util.ArrayList;
 public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasProductoDetalle.ProductosViewHolder> implements View.OnClickListener {
 
     ArrayList<ProductosVo> listaProductos;
+    private Context context;
     private View.OnClickListener listener;
 
-    public CategoriasProductoDetalle(ArrayList<ProductosVo> listaProductos) {
+    public CategoriasProductoDetalle(Context context, ArrayList<ProductosVo> listaProductos) {
+        this.context = context;
         this.listaProductos = listaProductos;
     }
 
@@ -42,6 +46,9 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
         holder.txtNombre.setText(listaProductos.get(position).getNombre().toString());
         holder.txtDescripcion.setText(listaProductos.get(position).getDescripcion().toString());
         holder.txtPrecio.setText(listaProductos.get(position).getPrecio().toString());
+
+       // Glide.with(context)
+        Picasso.with(context).load(listaProductos.get(position).getImage_url()).fit().error(R.mipmap.ic_launcher).into(holder.foto);
         //holder.foto.setImageResource(listaProductos.get(position).getImageid());
     }
 
@@ -84,7 +91,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
     public class ProductosViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtNombre, txtDescripcion, txtPrecio;
-        //ImageView foto;
+        ImageView foto;
 
         public ProductosViewHolder(View itemView) {
             super(itemView);
@@ -92,7 +99,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
             txtNombre = itemView.findViewById(R.id.tvNombre);
             txtDescripcion = itemView.findViewById(R.id.tvDescripcion);
             txtPrecio = itemView.findViewById(R.id.precio);
-            //foto = itemView.findViewById(R.id.idImage);
+            foto = itemView.findViewById(R.id.idImage);
         }
     }
 }
