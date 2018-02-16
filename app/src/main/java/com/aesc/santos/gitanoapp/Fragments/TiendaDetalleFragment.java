@@ -244,6 +244,7 @@ public class TiendaDetalleFragment extends Fragment {
     }
 
     private void seleccionZona3() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Plaza Madero", "Calzada Roosevelt, Kilometro 13.5, 7-59", "Tel: 4031-0951"));
     }
 
     private void seleccionZona1() {
