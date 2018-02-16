@@ -9,6 +9,7 @@
     android:orientation="vertical"
     android:padding="10dp" >
 
+    <!-- Cartitas -->
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
