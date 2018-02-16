@@ -106,38 +106,41 @@ public class TiendaDetalleFragment extends Fragment {
             seleccionZona4();
         } else if (position == 3) {
             Log.d(TAG, "Zona 6");
-           seleccionZona6();
+            seleccionZona6();
         } else if (position == 4) {
             Log.d(TAG, "Zona 7");
-           seleccionZona7();
+            seleccionZona7();
         } else if (position == 5) {
             Log.d(TAG, "Zona 9");
-          seleccionZona9();
+            seleccionZona9();
         } else if (position == 6) {
             Log.d(TAG, "Zona 10");
-           seleccionZona10();
+            seleccionZona10();
         } else if (position == 7) {
             Log.d(TAG, "Zona 11");
-           seleccionZona11();
+            seleccionZona11();
         } else if (position == 8) {
             Log.d(TAG, "Zona 12");
             seleccionZona12();
         } else if (position == 9) {
             Log.d(TAG, "Zona 13");
-           seleccionZona13();
+            seleccionZona13();
         } else if (position == 10) {
             Log.d(TAG, "Zona 14");
-           seleccionZona14();
+            seleccionZona14();
         } else if (position == 11) {
             Log.d(TAG, "Zona 15");
-         seleccionZona15();
+            seleccionZona15();
         } else if (position == 12) {
             Log.d(TAG, "Zona 16");
-           seleccionZona16();
+            seleccionZona16();
 
         } else if (position == 13) {
             Log.d(TAG, "Zona 17");
             seleccionZona17();
+        } else if (position == 14) {
+            Log.d(TAG, "Extrerior");
+            Exterior();
         }
         AdaptadorTiendaDetalle adapters = new AdaptadorTiendaDetalle(ubicacionesTiendas);
         recyclerTienda.setAdapter(adapters);
@@ -145,8 +148,15 @@ public class TiendaDetalleFragment extends Fragment {
         return view;
     }
 
-    private void seleccionZona9() {
+    private void Exterior() {
+        //ubicacionesTiendas.add(new UbicacionesTienda("", "", "Tel: "));
+        ubicacionesTiendas.add(new UbicacionesTienda("Comercial El Frutal", "Boulevard El Frutal 14-00 local No. 38", "Tel: 4032-9171"));
 
+    }
+
+    private void seleccionZona9() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Plaza Madero", "Calzada Roosevelt, Kilometro 13.5, 7-59", "Tel: 4031-0951"));
+        ubicacionesTiendas.add(new UbicacionesTienda("XEROX", "6 Avenida A 9-24 Plaza Rabi", "Tel: 4038-4927"));
 
         // Picasso.with(getContext()).load("https://cdn-pro.elsalvador.com/wp-content/uploads/2017/01/30182002/1476896384419.jpg")
         //.into(fotoUbicacion);
@@ -184,19 +194,24 @@ public class TiendaDetalleFragment extends Fragment {
     }
 
     private void seleccionZona6() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Cementos Progreso", "15 avenida 18-01 Finca la Pradera Casa 48", "Tel: 4033-4798"));
     }
 
     private void seleccionZona4() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Cemaco", "7a. Avenida 2-34, Local 22", "Tel: 4033-7786"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Gran Centro Comercial", "6ta. Avenida 0-60, Planta Baja", "Tel: 4033-6695"));
+        ubicacionesTiendas.add(new UbicacionesTienda("IGA", "Ruta 1 4-05", "Tel: 4032-5261"));
+
     }
 
     private void seleccionZona3() {
     }
 
     private void seleccionZona1() {
-        ubicacionesTiendas.add(new UbicacionesTienda("Zona 1","6ta. Avenida 8-82","4038-2012"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Zona 1", "6ta. Avenida 8-82", "Tel: 4038-2012"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Banco de Guatemala", "7a Avenida 22-01", "Tel: 4032-6413"));
 
     }
-
 
 
     // TODO: Rename method, update argument and hook method into UI event
