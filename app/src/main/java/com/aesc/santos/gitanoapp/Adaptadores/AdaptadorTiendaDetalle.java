@@ -32,7 +32,7 @@ public class AdaptadorTiendaDetalle extends RecyclerView.Adapter<AdaptadorTienda
 
     @Override
     public ProductosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_tienda_detalle, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_tienda_detalle, parent, false);
         view.setOnClickListener(this);
         return new ProductosViewHolder(view);
     }
@@ -40,8 +40,10 @@ public class AdaptadorTiendaDetalle extends RecyclerView.Adapter<AdaptadorTienda
     @Override
     public void onBindViewHolder(ProductosViewHolder holder, int position) {
 
-       // holder.txtNombre.setText(listaProductos.get(position).getNombre());
-       holder.txtDescripcionTienda.setText(ubicacionesTiendas.get(position).getTxtDescripcionTienda());
+        // holder.txtNombre.setText(listaProductos.get(position).getNombre());
+        holder.txtTitle.setText(ubicacionesTiendas.get(position).getTxtTitle());
+        holder.txtUbiTienda.setText(ubicacionesTiendas.get(position).getTxtUbiTienda());
+        holder.txtTelefono.setText(ubicacionesTiendas.get(position).getTxtTelefono());
 
         //holder.foto.setImageResource(listaProductos.get(position).getImageid());
         //holder.fotoTienda.setImageResource(ubicacionesTiendas.get(position).getFotoTienda());
@@ -50,18 +52,18 @@ public class AdaptadorTiendaDetalle extends RecyclerView.Adapter<AdaptadorTienda
     @Override
     public void onViewAttachedToWindow(ProductosViewHolder holder) {
         super.onViewAttachedToWindow(holder);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             animateCircularReveal(holder.itemView);
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void animateCircularReveal(View view){
+    public void animateCircularReveal(View view) {
         int centerX = 0;
         int centerY = 0;
         int startRadius = 0;
         int endRadius = Math.max(view.getWidth(), view.getHeight());
-        Animator animaton = ViewAnimationUtils.createCircularReveal(view,centerX,centerY,startRadius,endRadius);
+        Animator animaton = ViewAnimationUtils.createCircularReveal(view, centerX, centerY, startRadius, endRadius);
         view.setVisibility(View.VISIBLE);
         animaton.start();
     }
@@ -72,27 +74,29 @@ public class AdaptadorTiendaDetalle extends RecyclerView.Adapter<AdaptadorTienda
         return ubicacionesTiendas.size();
     }
 
-    public void setOnClickListener(View.OnClickListener listener){
+    public void setOnClickListener(View.OnClickListener listener) {
         this.listener = listener;
     }
 
     @Override
     public void onClick(View view) {
-        if (listener!= null){
+        if (listener != null) {
             listener.onClick(view);
         }
     }
 
     public class ProductosViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtDescripcionTienda;
-        ImageView fotoTienda;
+        TextView txtTitle, txtUbiTienda, txtTelefono;
+        //ImageView fotoTienda;
 
         public ProductosViewHolder(View itemView) {
             super(itemView);
 
-            txtDescripcionTienda=itemView.findViewById(R.id.txtUbicacion);
-            fotoTienda=itemView.findViewById(R.id.fotoUbicacion);
+            txtTitle = itemView.findViewById(R.id.txtTitle);
+            txtUbiTienda = itemView.findViewById(R.id.txtUbiTienda);
+            txtTelefono = itemView.findViewById(R.id.txtTelefono);
+            //fotoTienda=itemView.findViewById(R.id.fotoUbicacion);
         }
     }
 }

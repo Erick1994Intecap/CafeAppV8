@@ -88,7 +88,7 @@ public class TiendaDetalleFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tienda_detalle, container, false);
         Log.d(TAG, "onCreateView: ESTIY AQYU");
-        fotoUbicacion = view.findViewById(R.id.fotoUbicacion);
+        //fotoUbicacion = view.findViewById(R.id.fotoUbicacion);
 
 
         ubicacionesTiendas = new ArrayList<>();
@@ -97,47 +97,47 @@ public class TiendaDetalleFragment extends Fragment {
 
         if (position == 0) {
             Log.d(TAG, "onCreateView: Zona 1.");
-            //seleccionZona1();
+            seleccionZona1();
         } else if (position == 1) {
             Log.d(TAG, "Zona 3");
-            //seleccionZona3();
+            seleccionZona3();
         } else if (position == 2) {
             Log.d(TAG, "Zona 4");
-            //seleccionZona4();
+            seleccionZona4();
         } else if (position == 3) {
-            Log.d(TAG, "Zona 5");
-           // seleccionZona5();
+            Log.d(TAG, "Zona 6");
+           seleccionZona6();
         } else if (position == 4) {
             Log.d(TAG, "Zona 7");
-           // seleccionZona7();
+           seleccionZona7();
         } else if (position == 5) {
             Log.d(TAG, "Zona 9");
-          //  seleccionZona9();
+          seleccionZona9();
         } else if (position == 6) {
             Log.d(TAG, "Zona 10");
-           // seleccionZona10();
+           seleccionZona10();
         } else if (position == 7) {
             Log.d(TAG, "Zona 11");
-           // seleccionZona11();
+           seleccionZona11();
         } else if (position == 8) {
             Log.d(TAG, "Zona 12");
-            //seleccionZona12();
+            seleccionZona12();
         } else if (position == 9) {
             Log.d(TAG, "Zona 13");
-           // seleccionZona13();
+           seleccionZona13();
         } else if (position == 10) {
             Log.d(TAG, "Zona 14");
-           //seleccionZona14();
+           seleccionZona14();
         } else if (position == 11) {
             Log.d(TAG, "Zona 15");
-         //   seleccionZona15();
+         seleccionZona15();
         } else if (position == 12) {
             Log.d(TAG, "Zona 16");
-           // seleccionZona16();
+           seleccionZona16();
 
         } else if (position == 13) {
             Log.d(TAG, "Zona 17");
-            //seleccionZona17();
+            seleccionZona17();
         }
         AdaptadorTiendaDetalle adapters = new AdaptadorTiendaDetalle(ubicacionesTiendas);
         recyclerTienda.setAdapter(adapters);
@@ -145,7 +145,7 @@ public class TiendaDetalleFragment extends Fragment {
         return view;
     }
 
-    /*private void seleccionZona9() {
+    private void seleccionZona9() {
 
 
         // Picasso.with(getContext()).load("https://cdn-pro.elsalvador.com/wp-content/uploads/2017/01/30182002/1476896384419.jpg")
@@ -153,57 +153,24 @@ public class TiendaDetalleFragment extends Fragment {
     }
 
     private void seleccionZona7() {
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
+
     }
 
     private void seleccionZona10() {
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
     }
 
     private void seleccionZona11() {
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
+
     }
 
     private void seleccionZona12() {
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
     }
 
     private void seleccionZona13() {
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
     }
 
     private void seleccionZona14() {
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda("Hola", R.drawable.c_americano));
+
     }
 
     private void seleccionZona15() {
@@ -216,7 +183,7 @@ public class TiendaDetalleFragment extends Fragment {
     private void seleccionZona16() {
     }
 
-    private void seleccionZona5() {
+    private void seleccionZona6() {
     }
 
     private void seleccionZona4() {
@@ -226,10 +193,9 @@ public class TiendaDetalleFragment extends Fragment {
     }
 
     private void seleccionZona1() {
-        ubicacionesTiendas.add(new UbicacionesTienda(getString(R.string.caliente_americano), R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda(getString(R.string.caliente_americano), R.drawable.c_americano));
-        ubicacionesTiendas.add(new UbicacionesTienda(getString(R.string.caliente_americano), R.drawable.c_americano));
-    }*/
+        ubicacionesTiendas.add(new UbicacionesTienda("Zona 1","6ta. Avenida 8-82","4038-2012"));
+
+    }
 
 
 

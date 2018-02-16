@@ -9,39 +9,49 @@ import java.io.Serializable;
  */
 
 public class UbicacionesTienda implements Serializable{
-    private String txtDescripcionTienda;
-    private int fotoTienda;
-
-    public UbicacionesTienda(String txtDescripcionTienda, int fotoTienda) {
-        this.txtDescripcionTienda = txtDescripcionTienda;
-        this.fotoTienda = fotoTienda;
-    }
-
-    public UbicacionesTienda() {
-
-    }
+    private String txtTitle, txtUbiTienda, txtTelefono;
 
     @Override
     public String toString() {
         return "UbicacionesTienda{" +
-                "txtDescripcionTienda='" + txtDescripcionTienda + '\'' +
-                ", fotoTienda=" + fotoTienda +
+                "txtTitle='" + txtTitle + '\'' +
+                ", txtUbiTienda='" + txtUbiTienda + '\'' +
+                ", txtTelefono='" + txtTelefono + '\'' +
                 '}';
     }
 
-    public String getTxtDescripcionTienda() {
-        return txtDescripcionTienda;
+    public UbicacionesTienda(){
+
     }
 
-    public void setTxtDescripcionTienda(String txtDescripcionTienda) {
-        this.txtDescripcionTienda = txtDescripcionTienda;
+    public UbicacionesTienda(String txtTitle, String txtUbiTienda, String txtTelefono) {
+        this.txtTitle = txtTitle;
+        this.txtUbiTienda = txtUbiTienda;
+        this.txtTelefono = txtTelefono;
     }
 
-    public int getFotoTienda() {
-        return fotoTienda;
+    public String getTxtTitle() {
+        return txtTitle;
     }
 
-    public void setFotoTienda(int fotoTienda) {
-        this.fotoTienda = fotoTienda;
+    public void setTxtTitle(String txtTitle) {
+        this.txtTitle = txtTitle;
+    }
+
+    public String getTxtUbiTienda() {
+        return txtUbiTienda;
+    }
+
+    public void setTxtUbiTienda(String txtUbiTienda) {
+        this.txtUbiTienda = txtUbiTienda;
+    }
+
+    public String getTxtTelefono() {
+        return txtTelefono;
+    }
+
+    public void setTxtTelefono(String txtTelefono) {
+        this.txtTelefono = txtTelefono;
     }
 }
+

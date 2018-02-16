@@ -31,7 +31,7 @@ public class TiendaFragment extends Fragment {
             "Zona 1",
             "Zona 3",
             "Zona 4",
-            "Zona 5",
+            "Zona 6",
             "Zona 7",
             "Zona 9",
             "Zona 10",
@@ -41,7 +41,8 @@ public class TiendaFragment extends Fragment {
             "Zona 14",
             "Zona 15",
             "Zona 16",
-            "Zona 17"
+            "Zona 17",
+            "Exteriores"
 
 
     };
@@ -103,7 +104,6 @@ public class TiendaFragment extends Fragment {
         final ArrayList tiendaszonas = prepareData();
         AdaptadorTienda adapter = new AdaptadorTienda(getContext(), tiendaszonas);
         recyclerView.setAdapter(adapter);
-
 
 
         adapter.setOnClickListener(new View.OnClickListener() {
