@@ -1,14 +1,36 @@
 package com.aesc.santos.gitanoapp.Fragments;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.aesc.santos.gitanoapp.Adaptadores.CategoriasProducto;
+import com.aesc.santos.gitanoapp.Adaptadores.CategoriasProductoDetalle;
+import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
+import com.aesc.santos.gitanoapp.Entidades.ProductosVo;
 import com.aesc.santos.gitanoapp.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,11 +40,19 @@ import com.aesc.santos.gitanoapp.R;
  * Use the {@link PromocionesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PromocionesFragment extends Fragment {
+public class PromocionesFragment extends Fragment implements Response.ErrorListener, Response.Listener<JSONObject> {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    ArrayList<AndroidVersion> listCategorias;
+    RecyclerView recyclerProductos;
+
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -65,7 +95,76 @@ public class PromocionesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_promociones, container, false);
+        View view = inflater.inflate(R.layout.fragment_promociones, container, false);
+
+                listCategorias = new ArrayList<>();
+
+        recyclerProductos = view.findViewById(R.id.idRecycler);
+        recyclerProductos.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerProductos.setHasFixedSize(true);
+
+        //verificacion = view.findViewById(R.id.imgSinConeccion);
+        //verificacion.setVisibility(View.INVISIBLE);
+
+        request = Volley.newRequestQueue(getContext());
+
+        cargarWebService();
+
+        /*ConnectivityManager con = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = con.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnected()){
+            verificacion.setVisibility(View.INVISIBLE);
+            cargarWebService();
+        }else{
+            verificacion.setVisibility(View.VISIBLE);
+            Toast.makeText(activity, "No se pudo conectar, verifique el acceso a Internet e intente nuevamente", Toast.LENGTH_LONG).show();
+        }*/
+
+
+        return view;
+    }
+
+    private void cargarWebService() {
+        String url = "http://adrax.hol.es/gitaneAlistaPromociones.php";
+
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
+        request.add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(), "No se pudo conectar " + error.toString(), Toast.LENGTH_SHORT).show();
+        System.out.println();
+        //Log.d(TAG, "onErrorResponse: " + error.toString());
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        AndroidVersion promociones = null;
+
+        JSONArray json = response.optJSONArray("datos");
+
+        try {
+            for (int i = 0; i < json.length(); i++){
+                promociones = new AndroidVersion();
+                JSONObject jsonObject = null;
+
+                jsonObject = json.getJSONObject(i);
+
+                promociones.setAndroid_version_name(jsonObject.optString("nombre"));
+                promociones.setAndroid_image_url(jsonObject.optString("foto"));
+
+                listCategorias.add(promociones);
+            }
+
+            CategoriasProducto adapter = new CategoriasProducto(getContext(),listCategorias);
+            recyclerProductos.setAdapter(adapter);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "Error al momento de cargar las Categorias.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,6 +190,8 @@ public class PromocionesFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

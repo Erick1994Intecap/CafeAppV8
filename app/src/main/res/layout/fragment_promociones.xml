@@ -4,6 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.aesc.santos.gitanoapp.Fragments.PromocionesFragment">
 
-    <include layout="@layout/layout_promociones"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/idRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"/>
 
 </RelativeLayout>

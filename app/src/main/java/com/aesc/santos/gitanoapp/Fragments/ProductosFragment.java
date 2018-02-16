@@ -144,7 +144,7 @@ public class ProductosFragment extends Fragment implements Response.ErrorListene
     }
 
     private void cargarWebService() {
-        String url = "http://192.168.22.37/gitane/wsJSONConsultarLista.php";
+        String url = "http://adrax.hol.es/gitaneAlistaCategorias.php";
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);

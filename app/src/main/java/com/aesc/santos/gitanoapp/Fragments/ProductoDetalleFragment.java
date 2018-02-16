@@ -141,7 +141,7 @@ public class ProductoDetalleFragment extends Fragment implements Response.Listen
     }
 
     private void cargarWebService(int key) {
-        String url = "http://192.168.22.37/gitane/wsJSONConsultarUsuario.php?id=" + key;
+        String url = "http://adrax.hol.es/gitaneAlistaProductosDetalles.php?id=" + key;
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url,null,this,this);
         request.add(jsonObjectRequest);
