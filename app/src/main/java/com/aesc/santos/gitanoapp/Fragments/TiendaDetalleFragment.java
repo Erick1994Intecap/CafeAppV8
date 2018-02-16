@@ -155,7 +155,7 @@ public class TiendaDetalleFragment extends Fragment {
     }
 
     private void seleccionZona9() {
-        ubicacionesTiendas.add(new UbicacionesTienda("Plaza Madero", "Calzada Roosevelt, Kilometro 13.5, 7-59", "Tel: 4031-0951"));
+
         ubicacionesTiendas.add(new UbicacionesTienda("XEROX", "6 Avenida A 9-24 Plaza Rabi", "Tel: 4038-4927"));
 
         // Picasso.with(getContext()).load("https://cdn-pro.elsalvador.com/wp-content/uploads/2017/01/30182002/1476896384419.jpg")
@@ -163,10 +163,26 @@ public class TiendaDetalleFragment extends Fragment {
     }
 
     private void seleccionZona7() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Álorica 2", "Calzada Roosevelt 14-82 Local 160I", "Tel: 4031-0517"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Plaza Madero", "Calzada Roosevelt, Kilometro 13.5, 7-59", "Tel: 4031-0951"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Álorica 3", "Calzada Roosevelt 14-82 Local 160J", "Tel: 4032-8400"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Galerias Primma", "Calzada Rooselvet 14-82, Planta Baja PB22", "Tel: 4029-8879"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Peri-Salida Cemaco", "Calzada Roosevelt 25-50", "Tel: 4033-3791"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Peri-Interior Cemaco", "Calzada Roosevelt 25-50 ", "Tel: 4033-4048"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Peri Plaza", "Calzada Roosevelt 25-50 Plaza del Sabor No.3", "Tel: 4038-0834"));
+
+
 
     }
 
     private void seleccionZona10() {
+        ubicacionesTiendas.add(new UbicacionesTienda("UFM Medicina", "6ta Avenida 7-55 Interior Hospital La Esperanza", "Tel: 4031-5885"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Nearsol", "20 calle 5-25 Edificio Nearsol 4to Nivel", "Tel: 4031-0526"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Oakland Mall", "Diagonal 6 13-10 Tercer Nivel, Local FC-13", "Tel: 4053-6290"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Plaza Cemaco", "Boulevard Los Próceres 4-96 local 33", "Tel: 4033-6458"));
+        ubicacionesTiendas.add(new UbicacionesTienda("UFM Odontología", "Calle Manuel F. Ayau 6 Calle 7-11", "Tel: --"));
+        ubicacionesTiendas.add(new UbicacionesTienda("UFM", "6a. Calle Final, 2do Nivel", "Tel: 4038-1290"));
+
     }
 
     private void seleccionZona11() {
