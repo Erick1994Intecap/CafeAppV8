@@ -2,6 +2,8 @@ package com.aesc.santos.gitanoapp.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.Adaptadores.CategoriasProducto;
@@ -61,7 +64,7 @@ public class ProductosFragment extends Fragment implements Response.ErrorListene
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
+    ImageView verificacion;
     ArrayList<AndroidVersion> listCategorias;
     RecyclerView recyclerProductos;
 
@@ -104,10 +107,22 @@ public class ProductosFragment extends Fragment implements Response.ErrorListene
         recyclerProductos = view.findViewById(R.id.recyclerid);
         recyclerProductos.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerProductos.setHasFixedSize(true);
-        
+
+        verificacion = view.findViewById(R.id.imgSinConeccion);
+        verificacion.setVisibility(View.INVISIBLE);
+
         request = Volley.newRequestQueue(getContext());
-        
-        cargarWebService();
+
+        ConnectivityManager con = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = con.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnected()){
+            verificacion.setVisibility(View.INVISIBLE);
+            cargarWebService();
+        }else{
+            verificacion.setVisibility(View.VISIBLE);
+            Toast.makeText(activity, "No se pudo conectar, verifique el acceso a Internet e intente nuevamente", Toast.LENGTH_LONG).show();
+        }
 
         /*final ArrayList listCategorias = prepareData();
         CategoriasProducto adapter = new CategoriasProducto(getContext(),listCategorias);
