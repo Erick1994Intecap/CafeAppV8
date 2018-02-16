@@ -151,6 +151,8 @@ public class TiendaDetalleFragment extends Fragment {
     private void Exterior() {
         //ubicacionesTiendas.add(new UbicacionesTienda("", "", "Tel: "));
         ubicacionesTiendas.add(new UbicacionesTienda("Comercial El Frutal", "Boulevard El Frutal 14-00 local No. 38", "Tel: 4032-9171"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Fraijanes UNIS", "Km. 19.20 Finca Santa Isabel Local 3", "Tel: 6665-3700"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Plaza Tigo", "Km 9.5 Carretera a El Salvardor Local 2", "Tel: 6626-9210"));
 
     }
 
@@ -172,7 +174,6 @@ public class TiendaDetalleFragment extends Fragment {
         ubicacionesTiendas.add(new UbicacionesTienda("Peri Plaza", "Calzada Roosevelt 25-50 Plaza del Sabor No.3", "Tel: 4038-0834"));
 
 
-
     }
 
     private void seleccionZona10() {
@@ -186,27 +187,49 @@ public class TiendaDetalleFragment extends Fragment {
     }
 
     private void seleccionZona11() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Atento", "Calzada Aguilar Batres 38-94, 3er Nivel Atento", "Tel: 4091-9146"));
+        ubicacionesTiendas.add(new UbicacionesTienda("CUM", "9a Avenida 9-45, Primer Nivel Edificio B", "Tel: 4032-2373"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Miraflores", "21 Avenida 4-32, 2do Nivel, local FC-1", "Tel: 4037-3474"));
+
 
     }
 
     private void seleccionZona12() {
+        ubicacionesTiendas.add(new UbicacionesTienda("24/7", "Calzada Atanasio Tzul 22-0, El Cortijo II Oficina 121", "Tel: 4031-3937"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Genpact", "Avenida Petapa 38-39 Zona 12", "Tel: 4032-3583"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Plaza Atanasio", "Calzada Atanasio 51-57 Local 11", "Tel: 4033-5212"));
+        ubicacionesTiendas.add(new UbicacionesTienda("USAC Edificio S12", "Avenida Petapa 32 Calle S-12", "Tel: 4030-9700"));
+        ubicacionesTiendas.add(new UbicacionesTienda("USAC Odontología", "Interior Edificio M-13 ", "Tel: 4032-3275"));
     }
 
     private void seleccionZona13() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Aeropuerto La Aurora", "Segundo Nivel Local FN-2-15-35.77", "Tel: 4031-8846"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Plaza Guatemala", "Plaza Guatemala, 2do Nivel Local CC-2-31", "Tel: 4031-8877"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Alórica", "15 Avenida ", "Tel: 4032-8449"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Asistencia Global", "Avenida las Américas 17-78", "Tel: 4032-1640"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Atento WTC", "15 Avenida 5-00, Edificio WTC Torre sur 5to Nivel", "Tel: 4032-8449"));
+        ubicacionesTiendas.add(new UbicacionesTienda("Tetra Center", "15 Avenida 17-30 Torre Mundial II", "Tel: 4032-7713"));
+        ubicacionesTiendas.add(new UbicacionesTienda("XEROX WTC", "15 Avenida 5-00 Nivel 7mo Nivel ", "Tel: 4032-7713"));
     }
 
     private void seleccionZona14() {
-
+        ubicacionesTiendas.add(new UbicacionesTienda("Parque las Americas", "Avenida Las Américas 6-69, NIvel 1 local 102", "Tel: --"));
     }
 
     private void seleccionZona15() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Edificio Avante", "2 Calle 23-80 Nivel 1", "Tel: 4033-4456"));
+        ubicacionesTiendas.add(new UbicacionesTienda("UVM", "18 Avenida 11-37 VHIII", "Tel: 4038-2852"));
+        ubicacionesTiendas.add(new UbicacionesTienda("URL", "Vista Hermosa III Edificio J Local # 1", "Tel: 4032-5275"));
+
 
     }
 
     private void seleccionZona17() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Comercial Portales", "CA-9 Norte 03-20 Local. 8, Interior Cemaco ", "Tel: 4038-0072"));
     }
 
     private void seleccionZona16() {
+        ubicacionesTiendas.add(new UbicacionesTienda("Cemaco Cayalá", "Calzada Cayala Diagonal 35, 16-25", "Tel: 4031-0824"));
     }
 
     private void seleccionZona6() {
