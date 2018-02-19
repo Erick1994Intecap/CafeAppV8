@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.aesc.santos.gitanoapp.Adaptadores.CategoriasProductoDetalle;
 import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
 import com.aesc.santos.gitanoapp.Entidades.ProductosVo;
 import com.aesc.santos.gitanoapp.R;
+import com.aesc.santos.gitanoapp.Utilidades.Utilidades;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -85,6 +87,9 @@ public class PromocionesFragment extends Fragment implements Response.ErrorListe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Utilidades.visualizacion=Utilidades.GRID;
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -100,7 +105,7 @@ public class PromocionesFragment extends Fragment implements Response.ErrorListe
                 listCategorias = new ArrayList<>();
 
         recyclerProductos = view.findViewById(R.id.idRecycler);
-        recyclerProductos.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerProductos.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerProductos.setHasFixedSize(true);
 
         //verificacion = view.findViewById(R.id.imgSinConeccion);

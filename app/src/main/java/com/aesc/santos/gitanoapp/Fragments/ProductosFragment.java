@@ -20,6 +20,7 @@ import com.aesc.santos.gitanoapp.Adaptadores.CategoriasProducto;
 import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
 import com.aesc.santos.gitanoapp.Intefaces.IComunicaFragments;
 import com.aesc.santos.gitanoapp.R;
+import com.aesc.santos.gitanoapp.Utilidades.Utilidades;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -90,6 +91,9 @@ public class ProductosFragment extends Fragment implements Response.ErrorListene
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Utilidades.visualizacion=Utilidades.LIST;
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -103,7 +107,7 @@ public class ProductosFragment extends Fragment implements Response.ErrorListene
         View view = inflater.inflate(R.layout.fragment_productos, container, false);
 
         listCategorias = new ArrayList<>();
-        
+
         recyclerProductos = view.findViewById(R.id.recyclerid);
         recyclerProductos.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerProductos.setHasFixedSize(true);

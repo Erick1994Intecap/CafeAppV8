@@ -5,15 +5,18 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
 import com.aesc.santos.gitanoapp.R;
+import com.aesc.santos.gitanoapp.Utilidades.Utilidades;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -35,7 +38,18 @@ public class CategoriasProducto extends RecyclerView.Adapter<CategoriasProducto.
 
     @Override
     public ProductosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_productos_categoria, parent, false);
+
+        int layout = 0;
+
+        if (Utilidades.visualizacion==Utilidades.LIST){
+            //Toast.makeText(context, "LISt", Toast.LENGTH_SHORT).show();
+            layout = R.layout.list_productos_categoria;
+        }else{
+            //Toast.makeText(context, "Grid", Toast.LENGTH_SHORT).show();
+            layout = R.layout.grid_promociones;
+        }
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         view.setOnClickListener(this);
         return new ProductosViewHolder(view);
     }
