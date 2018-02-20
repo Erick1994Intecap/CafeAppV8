@@ -10,7 +10,17 @@
     tools:context="com.aesc.santos.gitanoapp.RegistrarActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/txtDpi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="DPI"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="217dp" />
+
+    <EditText
+        android:id="@+id/txtNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -20,7 +30,7 @@
         tools:layout_editor_absoluteY="74dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/txtApellido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -30,41 +40,51 @@
         tools:layout_editor_absoluteY="146dp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/txtContaseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="DPI"
+        android:hint="Contraseña"
         tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="217dp" />
+        tools:layout_editor_absoluteY="146dp" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/txtFechaNac"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="date"
         android:hint="Fecha de Nacimiento"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="291dp" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/txtCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Contraseña"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="358dp" />
+        android:inputType="textEmailAddress"
+        android:hint="Correo electronico"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="291dp" />
+
+    <EditText
+        android:id="@+id/txtTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Telefono"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="291dp" />
 
     <Button
-        android:onClick="Guardar"
+        android:id="@+id/btnGuardar"
         android:layout_marginTop="15dp"
         android:background="@color/background"
         android:textColor="@color/fuente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar"/>
+        android:text="Registrar"/>
 </LinearLayout>
