@@ -23,7 +23,7 @@ import java.util.Map;
 public class RegistrarActivity extends AppCompatActivity {
 
     StringRequest stringRequest;
-    EditText dpi, nombre, apellido, fecha, correo, telefono;
+    EditText dpi, nombre, apellido, fecha, correo, telefono, pass;
     Button guardar;
 
     @Override
@@ -37,6 +37,7 @@ public class RegistrarActivity extends AppCompatActivity {
         fecha = findViewById(R.id.txtFechaNac);
         correo = findViewById(R.id.txtCorreo);
         telefono = findViewById(R.id.txtTelefono);
+        pass = findViewById(R.id.txtContaseña);
 
         guardar = findViewById(R.id.btnGuardar);
 
@@ -96,6 +97,7 @@ public class RegistrarActivity extends AppCompatActivity {
                 String edpi =  dpi.getText().toString();
                 String enombre =  nombre.getText().toString();
                 String eapellido =  apellido.getText().toString();
+                String econtraseña =  pass.getText().toString();
                 String efecha =  fecha.getText().toString();
                 String ecorre =  correo.getText().toString();
                 String etelefono =  telefono.getText().toString();
@@ -105,7 +107,7 @@ public class RegistrarActivity extends AppCompatActivity {
                 parametros.put("dpi",edpi);
                 parametros.put("nombre",enombre);
                 parametros.put("apellido",eapellido);
-                parametros.put("password",etelefono);
+                parametros.put("password",econtraseña);
                 parametros.put("fecha_de_nacimiento",efecha);
                 parametros.put("correo",ecorre);
                 parametros.put("telefono",etelefono);
