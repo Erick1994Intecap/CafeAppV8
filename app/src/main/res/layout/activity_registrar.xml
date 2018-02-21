@@ -1,90 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical"
+    android:padding="25dp"
     tools:context="com.aesc.santos.gitanoapp.RegistrarActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="109dp"
+        android:src="@drawable/logo" />
 
     <EditText
         android:id="@+id/txtDpi"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ellipsize="start"
         android:ems="10"
-        android:inputType="number"
+        android:gravity="center_horizontal"
         android:hint="DPI"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="217dp" />
+        android:inputType="number"
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ellipsize="start"
         android:ems="10"
+        android:gravity="center"
         android:hint="Nombres"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="74dp" />
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/txtApellido"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:gravity="center"
         android:hint="Apellidos"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="146dp" />
+        android:inputType="textPersonName"
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/txtContaseña"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:gravity="center"
         android:hint="Contraseña"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="146dp" />
+        android:inputType="textPassword"
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/txtFechaNac"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="date"
+        android:gravity="center"
         android:hint="Fecha de Nacimiento"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="291dp" />
+        android:inputType="date"
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/txtCorreo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:gravity="center"
         android:hint="Correo electronico"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="291dp" />
+        android:inputType="textEmailAddress"
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/txtTelefono"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
+        android:gravity="center"
         android:hint="Telefono"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="291dp" />
+        android:inputType="number"
+        android:textSize="15dp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
 
     <Button
         android:id="@+id/btnGuardar"
-        android:layout_marginTop="15dp"
-        android:background="@color/background"
-        android:textColor="@color/fuente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrar"/>
+        android:layout_marginTop="15dp"
+        android:background="@color/background"
+        android:text="Registrar"
+        android:layout_marginLeft="120sp"
+        android:textColor="@color/fuente" />
+</LinearLayout>
 </LinearLayout>

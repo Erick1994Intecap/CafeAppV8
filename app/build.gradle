@@ -28,7 +28,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    //Circle Image
+    //Circle Imageds
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     //RecyclerView and Cardview
