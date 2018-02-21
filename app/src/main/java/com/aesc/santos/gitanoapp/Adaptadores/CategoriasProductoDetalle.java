@@ -11,6 +11,7 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.Entidades.ProductosVo;
 import com.aesc.santos.gitanoapp.R;
@@ -41,7 +42,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
     }
 
     @Override
-    public void onBindViewHolder(ProductosViewHolder holder, int position) {
+    public void onBindViewHolder(ProductosViewHolder holder, final int position) {
 
         holder.txtNombre.setText(listaProductos.get(position).getNombre().toString());
         holder.txtDescripcion.setText(listaProductos.get(position).getDescripcion().toString());
@@ -49,7 +50,19 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
 
        // Glide.with(context)
         Picasso.with(context).load(listaProductos.get(position).getImage_url()).fit().error(R.mipmap.ic_launcher).into(holder.foto);
-        //holder.foto.setImageResource(listaProductos.get(position).getImageid());
+
+       holder.meEncanta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //CLICK DEL CORA OJO VALEY ;)
+
+                Toast.makeText(context, listaProductos.get(position).getNombre(), Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
     }
 
     @Override
@@ -91,7 +104,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
     public class ProductosViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtNombre, txtDescripcion, txtPrecio;
-        ImageView foto;
+        ImageView foto, meEncanta;
 
         public ProductosViewHolder(View itemView) {
             super(itemView);
@@ -100,6 +113,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
             txtDescripcion = itemView.findViewById(R.id.tvDescripcion);
             txtPrecio = itemView.findViewById(R.id.precio);
             foto = itemView.findViewById(R.id.idImage);
+            meEncanta = itemView.findViewById(R.id.favoritosCora);
         }
     }
 }

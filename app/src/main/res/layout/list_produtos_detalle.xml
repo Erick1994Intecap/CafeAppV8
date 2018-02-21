@@ -65,7 +65,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/compartir"
+            android:id="@+id/favoritosCora"
             android:src="@drawable/ic_favorite"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
