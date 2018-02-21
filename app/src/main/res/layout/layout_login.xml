@@ -9,7 +9,8 @@
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username or Email"
+        android:hint="DPI"
+        android:inputType="number"
         android:textColorHint="#000"
         android:textAlignment="center"/>
 
@@ -17,7 +18,7 @@
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Contraseña"
         android:textColorHint="#000"
         android:textAlignment="center"
         android:layout_marginTop="15dp"/>
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:textColor="#fff"
         android:background="@color/background"
-        android:text="LOGIN"/>
+        android:text="Aceptar"/>
 
     <TextView
         android:id="@+id/registrar"

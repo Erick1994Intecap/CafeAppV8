@@ -51,8 +51,6 @@ public class RegistrarActivity extends AppCompatActivity {
 
     }
 
-
-
     public void limpiar(){
         dpi.setText("");
         nombre.setText("");
