@@ -3,15 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://C:\Users\Android.REDES\AndroidStudioProjects\CafeApp-master\.idea\CafeApp.iml" filepath="C:\Users\Android.REDES\AndroidStudioProjects\CafeApp-master\.idea\CafeApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CafeApp-master.iml" filepath="$PROJECT_DIR$/CafeApp-master.iml" />
       <module fileurl="file://C:\Users\android\Pictures\CafeAppV3\CafeApp-master.iml" filepath="C:\Users\android\Pictures\CafeAppV3\CafeApp-master.iml" />
+      <module fileurl="file://C:\Users\Sniper\AndroidStudioProjects\CafeAppV5\CafeApp-master.iml" filepath="C:\Users\Sniper\AndroidStudioProjects\CafeAppV5\CafeApp-master.iml" />
       <module fileurl="file://C:\Users\android\Videos\CafeAppV4\CafeApp-master.iml" filepath="C:\Users\android\Videos\CafeAppV4\CafeApp-master.iml" />
-      <module fileurl="file://C:\Users\android\Documents\CafeAppV5\CafeApp-master.iml" filepath="C:\Users\android\Documents\CafeAppV5\CafeApp-master.iml" />
       <module fileurl="file://C:\Users\Android.REDES\AndroidStudioProjects\CafeApp-master\.idea\CafeAppV3.iml" filepath="C:\Users\Android.REDES\AndroidStudioProjects\CafeApp-master\.idea\CafeAppV3.iml" />
       <module fileurl="file://C:\Users\Android.REDES\AndroidStudioProjects\CafeApp-master\CafeAppV4.iml" filepath="C:\Users\Android.REDES\AndroidStudioProjects\CafeApp-master\CafeAppV4.iml" />
-      <module fileurl="file://C:\Users\Android.REDES\AndroidStudioProjects\CafeApp-master\.idea\CafeAppV5.iml" filepath="C:\Users\Android.REDES\AndroidStudioProjects\CafeApp-master\.idea\CafeAppV5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CafeAppV5.iml" filepath="$PROJECT_DIR$/CafeAppV5.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\android\Documents\CafeAppV5\app\app.iml" filepath="C:\Users\android\Documents\CafeAppV5\app\app.iml" />
     </modules>
   </component>
 </project>
