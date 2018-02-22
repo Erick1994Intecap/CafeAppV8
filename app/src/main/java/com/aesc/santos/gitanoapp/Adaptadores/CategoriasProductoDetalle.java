@@ -54,12 +54,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
        holder.meEncanta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //CLICK DEL CORA OJO VALEY ;)
-
                 Toast.makeText(context, listaProductos.get(position).getNombre(), Toast.LENGTH_SHORT).show();
-
-
             }
         });
 

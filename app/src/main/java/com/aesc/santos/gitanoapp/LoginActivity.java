@@ -15,21 +15,24 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
 
     private static final String TAG = "LoginActivity";
 
-    private Button send;
-    private TextView reigs;
 
     EditText txtUsuario, txtPassword;
     Button btnIngresar;
+
+    RequestQueue mRequestQueue;
+    JsonObjectRequest mJsonObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,77 +40,37 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        txtUsuario = (EditText)findViewById(R.id.txtDpi);
-        txtPassword = (EditText)findViewById(R.id.txtContaseña);
-         btnIngresar = (Button)findViewById(R.id.btnLogin);
+        txtUsuario = (EditText)findViewById(R.id.etUsername);
+        txtPassword = (EditText)findViewById(R.id.etPassword);
+        btnIngresar = (Button)findViewById(R.id.btnLogin);
 
+        mRequestQueue = Volley.newRequestQueue(this);
 
-        send = findViewById(R.id.btnLogin);
-        send.setOnClickListener(new View.OnClickListener() {
+        btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Log.d(TAG, "onClick: stating");
-               // Intent intent = new Intent(getApplicationContext(),BodyActivity.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                //startActivity(intent);
-                ConsultaPass("http://adrax.hol.es/php/consultarusuario.php?user="+txtPassword.getText().toString());
+                initCesion();
             }
         });
-
-        reigs = findViewById(R.id.registrar);
-        reigs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RegistrarActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
-        });
-    }
-
-
-    private void ConsultaPass(String URL) {
-
-        Log.i("url",""+URL);
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest =  new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    JSONArray ja = new JSONArray(response);
-                    String contra = ja.getString(0);
-                    if(contra.equals(txtPassword.getText().toString())){
-
-                        Toast.makeText(getApplicationContext(),"Bienvenido",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),BodyActivity.class);
-                        startActivity(intent);
-
-                    }else{
-                        Toast.makeText(getApplicationContext(),"verifique su contraseña",Toast.LENGTH_SHORT).show();
-
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-
-                    Toast.makeText(getApplicationContext(),"El usuario no existe en la base de datos",Toast.LENGTH_LONG).show();
-                }
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        queue.add(stringRequest);
-
-
 
     }
 
+    private void initCesion() {
+        String url = "http://adrax.hol.es/php/consultarusuario.php?DPI=" + txtUsuario.getText().toString() + "&password=" + txtPassword.getText().toString();
+
+        mJsonObject = new JsonObjectRequest(Request.Method.GET, url, null,this,this);
+        mRequestQueue.add(mJsonObject);
+     }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(this, "Error al iniciar secion", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        Intent intent = new Intent(getApplicationContext(), BodyActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 }
