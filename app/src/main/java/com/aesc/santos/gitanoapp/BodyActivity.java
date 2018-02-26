@@ -1,6 +1,7 @@
 package com.aesc.santos.gitanoapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
 import com.aesc.santos.gitanoapp.Entidades.Tiendaszona;
+import com.aesc.santos.gitanoapp.Entidades.Usuario;
 import com.aesc.santos.gitanoapp.Fragments.NotificacionesFragment;
 import com.aesc.santos.gitanoapp.Fragments.ProductoDetalleFragment;
 import com.aesc.santos.gitanoapp.Fragments.ProductosFragment;
@@ -53,6 +55,15 @@ public class BodyActivity extends AppCompatActivity implements
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        SharedPreferences mPreferencesDPI = getSharedPreferences("DatoDPI",this.MODE_PRIVATE);
+        int valDPI = mPreferencesDPI.getInt("DPI", 35968745);
+
+        if (valDPI == 35968745){
+            Toast.makeText(this, "Quien Eres?", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -129,6 +140,12 @@ public class BodyActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void datosUsuario(Usuario usuario) {
+
+        //getSupportFragmentManager().beginTransaction().replace(R.id.container, mPuntosFragment).addToBackStack(null).commit();
+    }
+
+    @Override
     public void enviarProducto(int position) {
         mProductoDetalleFragment = new ProductoDetalleFragment();
 
@@ -136,9 +153,6 @@ public class BodyActivity extends AppCompatActivity implements
         bundleEnvio.putInt("key", position);
         mProductoDetalleFragment.setArguments(bundleEnvio);
 
-
-        //Toast.makeText(this, "ver" + bundleEnvio.toString(), Toast.LENGTH_SHORT).show();
-        //Cargar el fragmente en el activity
         getSupportFragmentManager().beginTransaction().replace(R.id.container, mProductoDetalleFragment).addToBackStack(null).commit();
     }
 

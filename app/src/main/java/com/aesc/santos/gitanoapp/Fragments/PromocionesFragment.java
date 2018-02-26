@@ -102,7 +102,7 @@ public class PromocionesFragment extends Fragment implements Response.ErrorListe
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_promociones, container, false);
 
-                listCategorias = new ArrayList<>();
+        listCategorias = new ArrayList<>();
 
         recyclerProductos = view.findViewById(R.id.idRecycler);
         recyclerProductos.setLayoutManager(new GridLayoutManager(getContext(),2));
