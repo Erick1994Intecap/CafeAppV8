@@ -15,7 +15,7 @@ import com.aesc.santos.gitanoapp.Intefaces.IComunicaFragments;
 
 
 public class LoginActivity extends AppCompatActivity implements LoginFragment.OnFragmentInteractionListener {
-
+//wefsdafsdfsdf
     private static final String TAG = "LoginActivity";
 
     PuntosFragment mPuntosFragment;
