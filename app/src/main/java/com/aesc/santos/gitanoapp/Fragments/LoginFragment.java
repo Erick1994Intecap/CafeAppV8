@@ -167,6 +167,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         }
 
         Intent intent = new Intent(getActivity(), BodyActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         getActivity().startActivity(intent);
     }
 

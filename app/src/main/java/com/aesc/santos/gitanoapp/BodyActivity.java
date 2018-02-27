@@ -1,5 +1,6 @@
 package com.aesc.santos.gitanoapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -60,7 +61,6 @@ public class BodyActivity extends AppCompatActivity implements
         int valDPI = mPreferencesDPI.getInt("DPI", 35968745);
 
         if (valDPI == 35968745){
-            Toast.makeText(this, "Quien Eres?", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this,LoginActivity.class);
             startActivity(intent);
         }
@@ -119,14 +119,19 @@ public class BodyActivity extends AppCompatActivity implements
             fragmentSeleccionado = true;
             Log.d(TAG, "onNavigationItemSelected: NotificacionesFragment");
         } else if (id == R.id.logOut) {
+
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            SharedPreferences settings = this.getSharedPreferences("DatoDPI", Context.MODE_PRIVATE);
+            settings.edit().remove("DPI").commit();
             startActivity(intent);
+
         } else if (id == R.id.siguenos) {
             Toast.makeText(this, "Siguenos", Toast.LENGTH_SHORT).show();
         }
 
         if (fragmentSeleccionado == true) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, miFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, miFragment).addToBackStack(null).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -84,7 +84,7 @@ public class PuntosFragment extends Fragment {
         int valScore = mPreferencesScore.getInt("score", 35968745);
         String puntosV = String.valueOf(valScore);
 
-        Toast.makeText(getContext(), "DPI: " + valDPI, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "DPI: " + valDPI, Toast.LENGTH_SHORT).show();
 
         nombre.setText(nombreUser + " " + apellidoSP.toString());
         estrellas.setText(puntosV.toString() + " Estrellas");
