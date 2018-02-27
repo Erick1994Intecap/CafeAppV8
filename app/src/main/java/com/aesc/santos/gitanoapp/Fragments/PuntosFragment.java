@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,11 @@ import com.aesc.santos.gitanoapp.BodyActivity;
 import com.aesc.santos.gitanoapp.Entidades.Usuario;
 import com.aesc.santos.gitanoapp.LoginActivity;
 import com.aesc.santos.gitanoapp.R;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,6 +45,8 @@ public class PuntosFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     TextView nombre, estrellas;
+    ImageView codigoBarras;
+    String dpiCod;
 
     public PuntosFragment() {
         // Required empty public constructor
@@ -62,12 +71,13 @@ public class PuntosFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_puntos, container, false);
-
+        codigoBarras=view.findViewById(R.id.imgCodUser);
         nombre = view.findViewById(R.id.tvNameUser);
         estrellas = view.findViewById(R.id.tvTotalEstrellas);
 
@@ -78,7 +88,12 @@ public class PuntosFragment extends Fragment {
         String apellidoSP = mPreferences.getString("MiDato2", "Error");
 
         SharedPreferences mPreferencesDPI = getContext().getSharedPreferences("DatoDPI",getContext().MODE_PRIVATE);
-        int valDPI = mPreferencesDPI.getInt("DPI", 35968745);
+        String valDPI = mPreferencesDPI.getString("DPI", "maria");
+        dpiCod = valDPI;
+
+        Toast.makeText(getContext(), String.valueOf(valDPI), Toast.LENGTH_SHORT).show();
+
+        generarBarcode();
 
         SharedPreferences mPreferencesScore = getContext().getSharedPreferences("DatoScore",getContext().MODE_PRIVATE);
         int valScore = mPreferencesScore.getInt("score", 35968745);
@@ -92,6 +107,18 @@ public class PuntosFragment extends Fragment {
         return view;
     }
 
+    public void generarBarcode() {
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode((dpiCod), BarcodeFormat.CODE_128, 450, 150);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            codigoBarras.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * verify all the permissions passed to the array

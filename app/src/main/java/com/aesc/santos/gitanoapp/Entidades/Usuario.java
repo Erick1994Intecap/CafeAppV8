@@ -10,12 +10,12 @@ public class Usuario implements Serializable {
     public String nombre;
     public String apellido;
     public int puntos;
-    public int DPI;
+    public String DPI;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, int puntos, int DPI) {
+    public Usuario(String nombre, String apellido, int puntos, String DPI) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.puntos = puntos;
@@ -46,11 +46,11 @@ public class Usuario implements Serializable {
         this.puntos = puntos;
     }
 
-    public int getDPI() {
+    public String getDPI() {
         return DPI;
     }
 
-    public void setDPI(int DPI) {
+    public void setDPI(String DPI) {
         this.DPI = DPI;
     }
 
@@ -60,7 +60,7 @@ public class Usuario implements Serializable {
                 "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", puntos=" + puntos +
-                ", DPI=" + DPI +
+                ", DPI='" + DPI + '\'' +
                 '}';
     }
 }

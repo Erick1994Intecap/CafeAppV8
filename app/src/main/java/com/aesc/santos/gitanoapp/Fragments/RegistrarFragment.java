@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,8 @@ public class RegistrarFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registrar, container, false);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
         dpi = view.findViewById(R.id.txtDpi);
         nombre = view.findViewById(R.id.txtNombre);
         apellido = view.findViewById(R.id.txtApellido);

@@ -46,7 +46,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
 
         holder.txtNombre.setText(listaProductos.get(position).getNombre().toString());
         holder.txtDescripcion.setText(listaProductos.get(position).getDescripcion().toString());
-        holder.txtPrecio.setText(listaProductos.get(position).getPrecio().toString());
+        holder.txtPrecio.setText(listaProductos.get(position).getPrecio().toString() + " Puntos");
 
        // Glide.with(context)
         Picasso.with(context).load(listaProductos.get(position).getImage_url()).fit().error(R.mipmap.ic_launcher).into(holder.foto);

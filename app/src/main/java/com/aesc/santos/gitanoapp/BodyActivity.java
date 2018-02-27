@@ -60,7 +60,9 @@ public class BodyActivity extends AppCompatActivity implements
         SharedPreferences mPreferencesDPI = getSharedPreferences("DatoDPI",this.MODE_PRIVATE);
         int valDPI = mPreferencesDPI.getInt("DPI", 35968745);
 
-        if (valDPI == 35968745){
+        //Toast.makeText(this, String.valueOf(valDPI), Toast.LENGTH_SHORT).show();
+
+        if (valDPI == 35968745 || valDPI == 0){
             Intent intent = new Intent(this,LoginActivity.class);
             startActivity(intent);
         }

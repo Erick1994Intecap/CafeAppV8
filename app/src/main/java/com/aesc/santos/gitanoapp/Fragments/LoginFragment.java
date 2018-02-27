@@ -46,8 +46,8 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
     private static final String ARG_PARAM2 = "param2";
 
     private static final String TAG = "LoginFragment";
-    EditText txtUsuario, txtPassword;
-    Button btnIngresar;
+    private EditText txtUsuario, txtPassword;
+    private Button btnIngresar;
 
     RequestQueue mRequestQueue;
     JsonObjectRequest mJsonObject;
@@ -86,17 +86,26 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
+
         txtUsuario = view.findViewById(R.id.etUsername);
         txtPassword =  view.findViewById(R.id.etPassword);
         btnIngresar = view.findViewById(R.id.btnLogin);
         btnRegistrar = view.findViewById(R.id.registrar);
+
+
 
         mRequestQueue = Volley.newRequestQueue(getContext());
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initCesion();
+                if (txtUsuario.length() != 0){
+                    initCesion();
+                }else{
+                    Toast.makeText(getContext(), "Es necesario llenar lo", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
@@ -113,10 +122,12 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
     }
 
     private void initCesion() {
-        String url = "http://adrax.hol.es/php/consultarusuario.php?DPI=" + txtUsuario.getText().toString() + "&password=" + txtPassword.getText().toString();
 
-        mJsonObject = new JsonObjectRequest(Request.Method.GET, url, null,this,this);
-        mRequestQueue.add(mJsonObject);
+            String url = "http://adrax.hol.es/php/consultarusuario.php?DPI=" + txtUsuario.getText().toString() + "&password=" + txtPassword.getText().toString();
+
+            mJsonObject = new JsonObjectRequest(Request.Method.GET, url, null,this,this);
+            mRequestQueue.add(mJsonObject);
+
     }
 
     @Override
@@ -133,7 +144,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         try {
             mJsonObject = mJsonArray.getJSONObject(0);
 
-            user.setDPI(mJsonObject.optInt("DPI"));
+            user.setDPI(mJsonObject.optString("DPI"));
             user.setNombre(mJsonObject.optString("nombre"));
             user.setApellido(mJsonObject.optString("apellido"));
             user.setPuntos(mJsonObject.optInt("puntos"));
@@ -151,24 +162,24 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
 
             SharedPreferences mPreferencesDPI = getContext().getSharedPreferences("DatoDPI",mContext.MODE_PRIVATE);
             SharedPreferences.Editor mEditorDPI = mPreferencesDPI.edit();
-            mEditorDPI.putInt("DPI", user.getDPI());
+            mEditorDPI.putString("DPI", user.getDPI());
             mEditorDPI.commit();
 
             SharedPreferences mPreferencesScore = getContext().getSharedPreferences("DatoScore",mContext.MODE_PRIVATE);
             SharedPreferences.Editor mEditorScore = mPreferencesScore.edit();
             mEditorScore.putInt("score", user.getPuntos());
             mEditorScore.commit();
+
             //editor.putInt("score",user.getPuntos());
-
-
+            Intent intent = new Intent(getActivity(), BodyActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            getActivity().startActivity(intent);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        Intent intent = new Intent(getActivity(), BodyActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        getActivity().startActivity(intent);
+
     }
 
 
