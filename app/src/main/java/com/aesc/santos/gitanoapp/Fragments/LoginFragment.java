@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.BodyActivity;
@@ -50,6 +51,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
 
     RequestQueue mRequestQueue;
     JsonObjectRequest mJsonObject;
+    TextView btnRegistrar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -87,6 +89,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         txtUsuario = view.findViewById(R.id.etUsername);
         txtPassword =  view.findViewById(R.id.etPassword);
         btnIngresar = view.findViewById(R.id.btnLogin);
+        btnRegistrar = view.findViewById(R.id.registrar);
 
         mRequestQueue = Volley.newRequestQueue(getContext());
 
@@ -96,6 +99,15 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
                 initCesion();
             }
         });
+
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RegistrarFragment mRegistrarFragment = new RegistrarFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, mRegistrarFragment).addToBackStack(null).commit();
+            }
+        });
+
 
         return view;
     }

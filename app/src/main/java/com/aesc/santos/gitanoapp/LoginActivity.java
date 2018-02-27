@@ -11,10 +11,13 @@ import android.widget.Toast;
 import com.aesc.santos.gitanoapp.Entidades.Usuario;
 import com.aesc.santos.gitanoapp.Fragments.LoginFragment;
 import com.aesc.santos.gitanoapp.Fragments.PuntosFragment;
+import com.aesc.santos.gitanoapp.Fragments.RegistrarFragment;
 import com.aesc.santos.gitanoapp.Intefaces.IComunicaFragments;
 
 
-public class LoginActivity extends AppCompatActivity implements LoginFragment.OnFragmentInteractionListener {
+public class LoginActivity extends AppCompatActivity
+        implements LoginFragment.OnFragmentInteractionListener,
+        RegistrarFragment.OnFragmentInteractionListener {
 //wefsdafsdfsdf
     private static final String TAG = "LoginActivity";
 
