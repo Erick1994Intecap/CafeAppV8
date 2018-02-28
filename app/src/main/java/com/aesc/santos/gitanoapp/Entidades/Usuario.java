@@ -10,12 +10,12 @@ public class Usuario implements Serializable {
     public String nombre;
     public String apellido;
     public int puntos;
-    public String DPI;
+    public long DPI;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, int puntos, String DPI) {
+    public Usuario(String nombre, String apellido, int puntos, int DPI) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.puntos = puntos;
@@ -46,11 +46,11 @@ public class Usuario implements Serializable {
         this.puntos = puntos;
     }
 
-    public String getDPI() {
+    public long getDPI() {
         return DPI;
     }
 
-    public void setDPI(String DPI) {
+    public void setDPI(long DPI) {
         this.DPI = DPI;
     }
 

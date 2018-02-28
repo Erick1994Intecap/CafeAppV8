@@ -88,10 +88,10 @@ public class PuntosFragment extends Fragment {
         String apellidoSP = mPreferences.getString("MiDato2", "Error");
 
         SharedPreferences mPreferencesDPI = getContext().getSharedPreferences("DatoDPI",getContext().MODE_PRIVATE);
-        String valDPI = mPreferencesDPI.getString("DPI", "maria");
-        dpiCod = valDPI;
+        long valDPI = mPreferencesDPI.getLong("DPI", 0);
+        dpiCod = String.valueOf(valDPI);
 
-        Toast.makeText(getContext(), String.valueOf(valDPI), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), String.valueOf(valDPI), Toast.LENGTH_SHORT).show();
 
         generarBarcode();
 

@@ -58,7 +58,7 @@ public class BodyActivity extends AppCompatActivity implements
         setSupportActionBar(toolbar);
 
         SharedPreferences mPreferencesDPI = getSharedPreferences("DatoDPI",this.MODE_PRIVATE);
-        int valDPI = mPreferencesDPI.getInt("DPI", 35968745);
+        long valDPI = mPreferencesDPI.getLong("DPI", 35968745);
 
         //Toast.makeText(this, String.valueOf(valDPI), Toast.LENGTH_SHORT).show();
 
@@ -170,7 +170,7 @@ public class BodyActivity extends AppCompatActivity implements
         Bundle bundleEnvio = new Bundle();
         bundleEnvio.putInt("key", position);
         mTiendaFragmentDetalle.setArguments(bundleEnvio);
-        Toast.makeText(this, "ver" + bundleEnvio.toString(), Toast.LENGTH_LONG).show();
+
         getSupportFragmentManager().beginTransaction().replace(R.id.container, mTiendaFragmentDetalle).addToBackStack(null).commit();
     }
 }

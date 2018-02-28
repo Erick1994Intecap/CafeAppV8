@@ -144,7 +144,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         try {
             mJsonObject = mJsonArray.getJSONObject(0);
 
-            user.setDPI(mJsonObject.optString("DPI"));
+            user.setDPI(mJsonObject.optLong("DPI"));
             user.setNombre(mJsonObject.optString("nombre"));
             user.setApellido(mJsonObject.optString("apellido"));
             user.setPuntos(mJsonObject.optInt("puntos"));
@@ -162,7 +162,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
 
             SharedPreferences mPreferencesDPI = getContext().getSharedPreferences("DatoDPI",mContext.MODE_PRIVATE);
             SharedPreferences.Editor mEditorDPI = mPreferencesDPI.edit();
-            mEditorDPI.putString("DPI", user.getDPI());
+            mEditorDPI.putLong("DPI", user.getDPI());
             mEditorDPI.commit();
 
             SharedPreferences mPreferencesScore = getContext().getSharedPreferences("DatoScore",mContext.MODE_PRIVATE);
