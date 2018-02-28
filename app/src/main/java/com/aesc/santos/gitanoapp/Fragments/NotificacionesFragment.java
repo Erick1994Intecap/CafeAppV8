@@ -35,8 +35,6 @@ public class NotificacionesFragment extends Fragment {
     private ArrayList<ProductosVo> listaFavoritos;
     RecyclerView recyclerFavoritos;
 
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -45,16 +43,6 @@ public class NotificacionesFragment extends Fragment {
     public NotificacionesFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NotificacionesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static NotificacionesFragment newInstance(String param1, String param2) {
         NotificacionesFragment fragment = new NotificacionesFragment();
         Bundle args = new Bundle();
@@ -76,10 +64,6 @@ public class NotificacionesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
-
-
         Utilidades utilidades = new Utilidades();
         View view = inflater.inflate(R.layout.fragment_notificaciones, container, false);
         listaFavoritos = new ArrayList<>();
@@ -89,7 +73,7 @@ public class NotificacionesFragment extends Fragment {
 
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences(Utilidades.SHARED_NAME, getContext().MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+       // SharedPreferences.Editor editor = sharedPreferences.edit();
 
         String cadena = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES,"");
 

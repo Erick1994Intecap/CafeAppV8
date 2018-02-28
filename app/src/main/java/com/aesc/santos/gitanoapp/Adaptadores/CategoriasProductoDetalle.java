@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.icu.text.Replaceable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
@@ -127,17 +128,29 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
                 //region ELSE IF FRAGMENTO FAVORITOS
                 else if (producto_o_favorito == false) {
                     try {
-                        /*
+
                         Utilidades utilidades = new Utilidades();
+
                         String cadena = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES,"");
                         flag = 0 ;
-                        String[] sharedList =  utilidades.separar(cadena);
-                        flag = 0 ;
+                       String[] sharedList =  utilidades.separar(cadena);
+                       // String cadena1 = cadena.replace(clave,"");
+                        //flag = 0;
+                        //editor.remove(Utilidades.SHARED_LIST_NAMES);
+                        //editor.commit();
+                        //String cadenaPrueba1 = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES,"");
+                       /* flag = 0;
+                        editor.putString(Utilidades.SHARED_LIST_NAMES, cadena1);
+                        flag = 0;
+                        String cadenaPrueba = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES, "");
+                        flag = 0;*/
+
+
                         String nuevoShared = "";
                         for (String i:sharedList) {
                             String s = i;
                             flag = 0;
-                            if (i==clave){
+                            if (i.equals(clave)){
                                 i = "";
                                 flag = 0;
                             }else{
@@ -153,7 +166,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
                         editor.commit();
                         flag = 0 ;
                         editor.putString(Utilidades.SHARED_LIST_NAMES,nuevoShared);
-                        flag = 0;*/
+                        flag = 0;
 
 
                         editor.remove(clave);

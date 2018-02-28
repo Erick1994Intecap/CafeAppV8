@@ -40,8 +40,7 @@ public class CategoriasProducto extends RecyclerView.Adapter<CategoriasProducto.
     public ProductosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         int layout = 0;
-            layout = R.layout.list_productos_categoria;
-
+        layout = R.layout.list_productos_categoria;
 
         View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         view.setOnClickListener(this);
@@ -50,8 +49,8 @@ public class CategoriasProducto extends RecyclerView.Adapter<CategoriasProducto.
 
     @Override
     public void onBindViewHolder(ProductosViewHolder holder, int position) {
-        holder.txtDescripcion.setText(android_versions.get(position).getAndroid_version_name().toString());
 
+        holder.txtDescripcion.setText(android_versions.get(position).getAndroid_version_name().toString());
         //piccaso inplementado
         Picasso.with(context).load(android_versions.get(position).getAndroid_image_url()).fit().error(R.mipmap.ic_launcher).into(holder.foto);
 
