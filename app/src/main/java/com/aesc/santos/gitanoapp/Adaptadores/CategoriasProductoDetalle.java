@@ -1,10 +1,13 @@
 package com.aesc.santos.gitanoapp.Adaptadores;
 
 import android.animation.Animator;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.Entidades.ProductosVo;
 import com.aesc.santos.gitanoapp.R;
+import com.aesc.santos.gitanoapp.Utilidades.Utilidades;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -25,14 +29,22 @@ import java.util.ArrayList;
 
 public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasProductoDetalle.ProductosViewHolder> implements View.OnClickListener {
 
+    private static final String TAG = "CategoriasProductoDetal";
+
     ArrayList<ProductosVo> listaProductos;
     private Context context;
     private View.OnClickListener listener;
 
-    public CategoriasProductoDetalle(Context context, ArrayList<ProductosVo> listaProductos) {
-        this.context = context;
+    //Control de Fragment a cargar.
+    private boolean producto_o_favorito;
+
+    public CategoriasProductoDetalle(ArrayList<ProductosVo> listaProductos, Context context, boolean producto_o_favorito) {
         this.listaProductos = listaProductos;
+        this.context = context;
+        this.listener = listener;
+        this.producto_o_favorito = producto_o_favorito;
     }
+
 
     @Override
     public ProductosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -41,20 +53,121 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
         return new ProductosViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(ProductosViewHolder holder, final int position) {
 
-        holder.txtNombre.setText(listaProductos.get(position).getNombre().toString());
-        holder.txtDescripcion.setText(listaProductos.get(position).getDescripcion().toString());
-        holder.txtPrecio.setText(listaProductos.get(position).getPrecio().toString() + " Puntos");
 
-       // Glide.with(context)
-        Picasso.with(context).load(listaProductos.get(position).getImage_url()).fit().error(R.mipmap.ic_launcher).into(holder.foto);
+        holder.txtNombre.setText(listaProductos.get(position).getNombre());
+        holder.txtDescripcion.setText(listaProductos.get(position).getDescripcion());
+        holder.txtPrecio.setText(listaProductos.get(position).getPrecio() + " Puntos");
 
-       holder.meEncanta.setOnClickListener(new View.OnClickListener() {
+        Log.d(TAG, "onBindViewHolder: nombre> " + holder.txtNombre.getText().toString());
+
+        // Glide.with(context)
+        //Agregado para control de Exepciones.....................................................vvvvvvvvvv
+        String url1 = "/";
+        String url = "https:"+"url1"+"/www.gettyimages.es/ilustraciones/se%C3%B1al-de-no-consumir-bebidas";
+        if (listaProductos.get(position).getImage_url()==""){
+            Picasso.with(context).load(url).fit().error(R.mipmap.ic_launcher).into(holder.foto);
+        }
+        else {
+            Picasso.with(context).load(listaProductos.get(position).getImage_url()).fit().error(R.mipmap.ic_launcher).into(holder.foto);
+        }
+
+        holder.meEncanta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, listaProductos.get(position).getNombre(), Toast.LENGTH_SHORT).show();
+
+                int flag = 0;
+                String clave = listaProductos.get(position).getNombre();//clave sharedpreferences
+
+                //region INSTANCIA SHAREDPREFERENCES
+
+                SharedPreferences sharedPreferences = context.getSharedPreferences(Utilidades.SHARED_NAME, context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
+                //endregion
+                //region IF Fragmento Productos
+                if (producto_o_favorito == true) {
+                    try {
+                        //region ARRAY VALORES CARDVIEW
+                        String[] valores = new String[]{
+                                clave,
+                                listaProductos.get(position).getPrecio(),
+                                listaProductos.get(position).getImage_url()};
+                        //endregion
+
+                        //region Junta los valores en un solo CSV singular
+                        String valorConjunto = "";
+                        for (int i = 0; i < valores.length; i++) {
+                            if (i == 0)
+                                valorConjunto += valores[i];
+                            else
+                                valorConjunto += "," + valores[i];
+                        }
+                        //endregion
+
+                        String cadena = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES, "") + clave + ",";
+                        editor.remove(Utilidades.SHARED_LIST_NAMES);
+                        editor.commit();
+
+                        editor.putString(Utilidades.SHARED_LIST_NAMES, cadena);
+                        editor.commit();
+                        //-----------------------------WATCH JOSH ----------------------------------------//
+                        editor.putString(clave,valorConjunto);
+                        editor.commit();
+                        Toast.makeText(context, "Agregado a favoritos!!", Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                    }
+                }
+                //endregion
+                //region ELSE IF FRAGMENTO FAVORITOS
+                else if (producto_o_favorito == false) {
+                    try {
+                        /*
+                        Utilidades utilidades = new Utilidades();
+                        String cadena = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES,"");
+                        flag = 0 ;
+                        String[] sharedList =  utilidades.separar(cadena);
+                        flag = 0 ;
+                        String nuevoShared = "";
+                        for (String i:sharedList) {
+                            String s = i;
+                            flag = 0;
+                            if (i==clave){
+                                i = "";
+                                flag = 0;
+                            }else{
+                                nuevoShared += i+",";
+                                flag = 0;
+                            }
+                            nuevoShared += i;
+
+                        }
+
+                        editor.remove(Utilidades.SHARED_LIST_NAMES);
+                        flag = 0;
+                        editor.commit();
+                        flag = 0 ;
+                        editor.putString(Utilidades.SHARED_LIST_NAMES,nuevoShared);
+                        flag = 0;*/
+
+
+                        editor.remove(clave);
+                        flag = 0;
+                        editor.commit();
+                        flag = 0 ;
+                        Toast.makeText(context, "Eliminado de Favoritos!", Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                    }
+
+                }
+                //endregion
+
             }
         });
 

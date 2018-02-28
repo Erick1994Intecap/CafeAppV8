@@ -1,14 +1,22 @@
 package com.aesc.santos.gitanoapp.Fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aesc.santos.gitanoapp.Adaptadores.CategoriasProductoDetalle;
+import com.aesc.santos.gitanoapp.Entidades.ProductosVo;
 import com.aesc.santos.gitanoapp.R;
+import com.aesc.santos.gitanoapp.Utilidades.Utilidades;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +31,10 @@ public class NotificacionesFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    //variables dev
+    private ArrayList<ProductosVo> listaFavoritos;
+    RecyclerView recyclerFavoritos;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -64,8 +76,54 @@ public class NotificacionesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notificaciones, container, false);
+
+
+        Utilidades utilidades = new Utilidades();
+        View view = inflater.inflate(R.layout.fragment_notificaciones, container, false);
+        listaFavoritos = new ArrayList<>();
+        recyclerFavoritos = view.findViewById(R.id.recyclerFavoritos);
+        recyclerFavoritos.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerFavoritos.setHasFixedSize(true);
+
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(Utilidades.SHARED_NAME, getContext().MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        String cadena = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES,"");
+
+
+        String[] sharedList = utilidades.separar(cadena);
+
+        for (String i: sharedList) {
+            ProductosVo producto = new ProductosVo();
+            String detalles = sharedPreferences.getString(i,"");
+
+            String[] datosProducto = utilidades.separar(detalles);
+            if (datosProducto[0] != "") {
+                producto.setNombre(datosProducto[0]);
+                producto.setPrecio(datosProducto[1]);
+                producto.setImage_url(datosProducto[2]);
+
+
+            }else {
+                producto.setNombre("NO FAVORITOS");
+                producto.setDescripcion("No ha marcado ningun favorito....");
+
+            }
+            listaFavoritos.add(producto);
+
+        }
+
+        CategoriasProductoDetalle adapter = new CategoriasProductoDetalle(listaFavoritos, getContext(), Utilidades.FRAGMENT_FAVORITOS);
+
+        recyclerFavoritos.setAdapter(adapter);
+
+
+
+        return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

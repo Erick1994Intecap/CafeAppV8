@@ -7,10 +7,10 @@ import java.io.Serializable;
  */
 
 public class ProductosVo implements Serializable{
-    private String nombre;
-    private String descripcion;
-    private String precio;
-    public String image_url;
+    private String nombre = "";
+    private String descripcion = "";
+    private String precio ="";
+    public String image_url = "";
 
     public ProductosVo() {
     }
