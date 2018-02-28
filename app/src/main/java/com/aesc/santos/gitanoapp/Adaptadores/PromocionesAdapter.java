@@ -41,7 +41,7 @@ public class PromocionesAdapter extends RecyclerView.Adapter<PromocionesAdapter.
         Picasso.with(mContext).load(mPromociones.get(position).getImgP()).fit().error(R.mipmap.ic_launcher).into(holder.vistaPrevia);
         holder.titulo.setText(mPromociones.get(position).getNombreP().toString());
         holder.descripcion.setText(mPromociones.get(position).getDescP());
-        holder.fechas.setText(mPromociones.get(position).getFechaInP().toString() + " a " + mPromociones.get(position).getFechaCaP().toString());
+        holder.fechas.setText("Fecha: " + mPromociones.get(position).getFechaInP().toString() + " a " + mPromociones.get(position).getFechaCaP().toString());
     }
 
     @Override
