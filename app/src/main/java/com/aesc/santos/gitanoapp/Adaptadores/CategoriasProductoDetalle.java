@@ -43,7 +43,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
         this.context = context;
         this.listener = listener;
         this.producto_o_favorito = producto_o_favorito;
-    }
+    }//
 
 
     @Override
