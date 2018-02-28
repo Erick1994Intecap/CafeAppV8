@@ -40,14 +40,8 @@ public class CategoriasProducto extends RecyclerView.Adapter<CategoriasProducto.
     public ProductosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         int layout = 0;
-
-        if (Utilidades.visualizacion==Utilidades.LIST){
-            //Toast.makeText(context, "LISt", Toast.LENGTH_SHORT).show();
             layout = R.layout.list_productos_categoria;
-        }else{
-            //Toast.makeText(context, "Grid", Toast.LENGTH_SHORT).show();
-            layout = R.layout.grid_promociones;
-        }
+
 
         View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         view.setOnClickListener(this);

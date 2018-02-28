@@ -44,7 +44,7 @@ public class PuntosFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    TextView nombre, estrellas;
+    TextView nombre, estrellas, canal;
     ImageView codigoBarras;
     String dpiCod;
 
@@ -80,9 +80,12 @@ public class PuntosFragment extends Fragment {
         codigoBarras=view.findViewById(R.id.imgCodUser);
         nombre = view.findViewById(R.id.tvNameUser);
         estrellas = view.findViewById(R.id.tvTotalEstrellas);
+        canal = view.findViewById(R.id.nombre_del_tema);
 
         SharedPreferences sharedPred = getContext().getSharedPreferences("ArchivoSP",getContext().MODE_PRIVATE);
         String nombreUser = sharedPred.getString("MiDato","Error");
+
+        //canal.setText(nombreUser);
 
         SharedPreferences mPreferences = getContext().getSharedPreferences("DatoA",getContext().MODE_PRIVATE);
         String apellidoSP = mPreferences.getString("MiDato2", "Error");

@@ -17,8 +17,10 @@ import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.Adaptadores.CategoriasProducto;
 import com.aesc.santos.gitanoapp.Adaptadores.CategoriasProductoDetalle;
+import com.aesc.santos.gitanoapp.Adaptadores.PromocionesAdapter;
 import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
 import com.aesc.santos.gitanoapp.Entidades.ProductosVo;
+import com.aesc.santos.gitanoapp.Entidades.Promociones;
 import com.aesc.santos.gitanoapp.R;
 import com.aesc.santos.gitanoapp.Utilidades.Utilidades;
 import com.android.volley.Request;
@@ -48,7 +50,7 @@ public class PromocionesFragment extends Fragment implements Response.ErrorListe
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    ArrayList<AndroidVersion> listCategorias;
+    ArrayList<Promociones> listCategorias;
     RecyclerView recyclerProductos;
 
     RequestQueue request;
@@ -105,7 +107,7 @@ public class PromocionesFragment extends Fragment implements Response.ErrorListe
         listCategorias = new ArrayList<>();
 
         recyclerProductos = view.findViewById(R.id.idRecycler);
-        recyclerProductos.setLayoutManager(new GridLayoutManager(getContext(),2));
+        recyclerProductos.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerProductos.setHasFixedSize(true);
 
         //verificacion = view.findViewById(R.id.imgSinConeccion);
@@ -146,24 +148,27 @@ public class PromocionesFragment extends Fragment implements Response.ErrorListe
 
     @Override
     public void onResponse(JSONObject response) {
-        AndroidVersion promociones = null;
+        Promociones promociones = null;
 
         JSONArray json = response.optJSONArray("datos");
 
         try {
             for (int i = 0; i < json.length(); i++){
-                promociones = new AndroidVersion();
+                promociones = new Promociones();
                 JSONObject jsonObject = null;
 
                 jsonObject = json.getJSONObject(i);
 
-                promociones.setAndroid_version_name(jsonObject.optString("nombre"));
-                promociones.setAndroid_image_url(jsonObject.optString("foto"));
+                promociones.setNombreP(jsonObject.optString("nombre"));
+                promociones.setDescP(jsonObject.optString("descripcion"));
+                promociones.setFechaInP(jsonObject.optString("fecha_inicio"));
+                promociones.setFechaCaP(jsonObject.optString("fecha_final"));
+                promociones.setImgP(jsonObject.optString("foto"));
 
                 listCategorias.add(promociones);
             }
 
-            CategoriasProducto adapter = new CategoriasProducto(getContext(),listCategorias);
+            PromocionesAdapter adapter = new PromocionesAdapter(getContext(),listCategorias);
             recyclerProductos.setAdapter(adapter);
 
         } catch (JSONException e) {

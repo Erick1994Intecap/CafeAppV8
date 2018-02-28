@@ -102,7 +102,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
                 if (txtUsuario.length() != 0){
                     initCesion();
                 }else{
-                    Toast.makeText(getContext(), "Es necesario llenar lo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Datos Incompletos", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -132,7 +132,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getContext(), "Error al iniciar secion", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
     }
 
     @Override

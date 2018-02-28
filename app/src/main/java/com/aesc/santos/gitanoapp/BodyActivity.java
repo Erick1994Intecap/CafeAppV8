@@ -17,6 +17,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
@@ -60,6 +62,13 @@ public class BodyActivity extends AppCompatActivity implements
         SharedPreferences mPreferencesDPI = getSharedPreferences("DatoDPI",this.MODE_PRIVATE);
         long valDPI = mPreferencesDPI.getLong("DPI", 35968745);
 
+        SharedPreferences sharedPred = getSharedPreferences("ArchivoSP",this.MODE_PRIVATE);
+        String nombreUser = sharedPred.getString("MiDato","Error");
+
+        //canal.setText(nombreUser);
+
+        SharedPreferences mPreferences = getSharedPreferences("DatoA",this.MODE_PRIVATE);
+        String apellidoSP = mPreferences.getString("MiDato2", "Error");
         //Toast.makeText(this, String.valueOf(valDPI), Toast.LENGTH_SHORT).show();
 
         if (valDPI == 35968745 || valDPI == 0){
@@ -68,12 +77,18 @@ public class BodyActivity extends AppCompatActivity implements
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        //ESTO PERMITE CAMBIARLE EL TEXTO EN EL ENCABEZADO
+        View hView =  navigationView.getHeaderView(0);
+        TextView nav_user = (TextView)hView.findViewById(R.id.nombre_del_tema);
+        nav_user.setText(nombreUser.toString() + " " + apellidoSP);
+        //AQUI TERMINA LO DEL ENCABEZDO
+
         navigationView.setNavigationItemSelectedListener(this);
 
         mPuntosFragment = new PuntosFragment();
