@@ -26,9 +26,9 @@
 
             <ImageView
                 android:id="@+id/mirame"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_local"/>
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/hubicacion_cafe"/>
 
             <TextView
                 android:id="@+id/txtZona"

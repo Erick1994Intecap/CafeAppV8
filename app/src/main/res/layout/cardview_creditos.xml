@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:elevation="10dp"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/crPhoto"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:layout_marginTop="5sp"
+            android:src="@drawable/user" />
+
+
+        <TextView
+            android:id="@+id/txtNombreAbtUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/crPhoto"
+            android:layout_gravity="center"
+            android:layout_toEndOf="@+id/crPhoto"
+            android:layout_toRightOf="@+id/crPhoto"
+            android:gravity="center"
+            android:text="Nombre"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/txtPuesto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtNombreAbtUs"
+            android:layout_marginTop="27dp"
+            android:layout_toEndOf="@+id/crPhoto"
+            android:layout_toRightOf="@+id/crPhoto"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
