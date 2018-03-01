@@ -17,6 +17,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/crPhoto"
+            android:layout_centerHorizontal="true"
             android:layout_width="100sp"
             android:layout_height="100sp"
             android:layout_marginTop="5sp"
@@ -25,12 +26,8 @@
 
         <TextView
             android:id="@+id/txtNombreAbtUs"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/crPhoto"
-            android:layout_gravity="center"
-            android:layout_toEndOf="@+id/crPhoto"
-            android:layout_toRightOf="@+id/crPhoto"
             android:gravity="center"
             android:text="Nombre"
             android:textSize="20sp"
@@ -38,10 +35,9 @@
 
         <TextView
             android:id="@+id/txtPuesto"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtNombreAbtUs"
-            android:layout_marginTop="27dp"
             android:layout_toEndOf="@+id/crPhoto"
             android:layout_toRightOf="@+id/crPhoto"
             android:gravity="center"
