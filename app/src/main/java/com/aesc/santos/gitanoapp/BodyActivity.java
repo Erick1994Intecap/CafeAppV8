@@ -24,6 +24,8 @@ import android.widget.Toast;
 import com.aesc.santos.gitanoapp.Entidades.AndroidVersion;
 import com.aesc.santos.gitanoapp.Entidades.Tiendaszona;
 import com.aesc.santos.gitanoapp.Entidades.Usuario;
+import com.aesc.santos.gitanoapp.Fragments.Acerca_de;
+import com.aesc.santos.gitanoapp.Fragments.CreditosFragment;
 import com.aesc.santos.gitanoapp.Fragments.NotificacionesFragment;
 import com.aesc.santos.gitanoapp.Fragments.ProductoDetalleFragment;
 import com.aesc.santos.gitanoapp.Fragments.ProductosFragment;
@@ -42,7 +44,7 @@ public class BodyActivity extends AppCompatActivity implements
         PromocionesFragment.OnFragmentInteractionListener,
         PuntosFragment.OnFragmentInteractionListener,
         TiendaFragment.OnFragmentInteractionListener,
-        IComunicaFragments {
+        IComunicaFragments, Acerca_de.OnFragmentInteractionListener, CreditosFragment.OnFragmentInteractionListener {
 
 
     private static final String TAG = "BodyActivity";
@@ -59,20 +61,20 @@ public class BodyActivity extends AppCompatActivity implements
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SharedPreferences mPreferencesDPI = getSharedPreferences("DatoDPI",this.MODE_PRIVATE);
+        SharedPreferences mPreferencesDPI = getSharedPreferences("DatoDPI", this.MODE_PRIVATE);
         long valDPI = mPreferencesDPI.getLong("DPI", 35968745);
 
-        SharedPreferences sharedPred = getSharedPreferences("ArchivoSP",this.MODE_PRIVATE);
-        String nombreUser = sharedPred.getString("MiDato","Error");
+        SharedPreferences sharedPred = getSharedPreferences("ArchivoSP", this.MODE_PRIVATE);
+        String nombreUser = sharedPred.getString("MiDato", "Error");
 
         //canal.setText(nombreUser);
 
-        SharedPreferences mPreferences = getSharedPreferences("DatoA",this.MODE_PRIVATE);
+        SharedPreferences mPreferences = getSharedPreferences("DatoA", this.MODE_PRIVATE);
         String apellidoSP = mPreferences.getString("MiDato2", "Error");
         //Toast.makeText(this, String.valueOf(valDPI), Toast.LENGTH_SHORT).show();
 
-        if (valDPI == 35968745 || valDPI == 0){
-            Intent intent = new Intent(this,LoginActivity.class);
+        if (valDPI == 35968745 || valDPI == 0) {
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
 
@@ -84,8 +86,8 @@ public class BodyActivity extends AppCompatActivity implements
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         //ESTO PERMITE CAMBIARLE EL TEXTO EN EL ENCABEZADO
-        View hView =  navigationView.getHeaderView(0);
-        TextView nav_user = (TextView)hView.findViewById(R.id.nombre_del_tema);
+        View hView = navigationView.getHeaderView(0);
+        TextView nav_user = (TextView) hView.findViewById(R.id.nombre_del_tema);
         nav_user.setText(nombreUser.toString() + " " + apellidoSP);
         //AQUI TERMINA LO DEL ENCABEZDO
 
@@ -143,8 +145,17 @@ public class BodyActivity extends AppCompatActivity implements
             settings.edit().remove("DPI").commit();
             startActivity(intent);
 
-        } else if (id == R.id.siguenos) {
+        } /*else if (id == R.id.siguenos) {
             Toast.makeText(this, "Siguenos", Toast.LENGTH_SHORT).show();
+        }*/ else if (id == R.id.abtUs) {
+            miFragment = new CreditosFragment();
+            fragmentSeleccionado = true;
+            Log.d(TAG, "AbtUSFragment");
+
+        } else if (id == R.id.acerca_de) {
+            miFragment = new Acerca_de();
+            fragmentSeleccionado = true;
+
         }
 
         if (fragmentSeleccionado == true) {

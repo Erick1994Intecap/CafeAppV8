@@ -157,7 +157,7 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
                                 nuevoShared += i+",";
                                 flag = 0;
                             }
-                            nuevoShared += i;
+                           // nuevoShared += i;
 
                         }
 

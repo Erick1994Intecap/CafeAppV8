@@ -28,8 +28,12 @@
             <item android:title="Logout"
                 android:id="@+id/logOut"/>
 
-            <item android:title="Siguenos"
-                android:id="@+id/siguenos"/>
+            <item
+                android:id="@+id/acerca_de"
+                android:title="Acerca de" />
+            <item
+                android:id="@+id/abtUs"
+                android:title="Créditos" />
 
         </menu>
     </item>
