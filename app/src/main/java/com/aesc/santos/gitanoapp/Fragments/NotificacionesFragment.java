@@ -73,10 +73,8 @@ public class NotificacionesFragment extends Fragment {
 
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences(Utilidades.SHARED_NAME, getContext().MODE_PRIVATE);
-       // SharedPreferences.Editor editor = sharedPreferences.edit();
 
         String cadena = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES,"");
-
 
         String[] sharedList = utilidades.separar(cadena);
 
@@ -85,18 +83,16 @@ public class NotificacionesFragment extends Fragment {
             String detalles = sharedPreferences.getString(i,"");
 
             String[] datosProducto = utilidades.separar(detalles);
-            if (datosProducto[0] != "") {
-                producto.setNombre(datosProducto[0]);
-                producto.setPrecio(datosProducto[1]);
-                producto.setImage_url(datosProducto[2]);
 
+                try {
+                    producto.setNombre(datosProducto[0]);
+                    producto.setPrecio(datosProducto[1]);
+                    producto.setImage_url(datosProducto[2]);
+                    listaFavoritos.add(producto);
 
-            }else {
-                producto.setNombre("NO FAVORITOS");
-                producto.setDescripcion("No ha marcado ningun favorito....");
+                }catch (Exception e) {
 
-            }
-            listaFavoritos.add(producto);
+                }
 
         }
 

@@ -60,6 +60,7 @@ public class BodyActivity extends AppCompatActivity implements
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
         SharedPreferences mPreferencesDPI = getSharedPreferences("DatoDPI", this.MODE_PRIVATE);
         long valDPI = mPreferencesDPI.getLong("DPI", 35968745);

@@ -62,25 +62,13 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
         holder.txtNombre.setText(listaProductos.get(position).getNombre());
         holder.txtDescripcion.setText(listaProductos.get(position).getDescripcion());
         holder.txtPrecio.setText(listaProductos.get(position).getPrecio() + " Puntos");
+        Picasso.with(context).load(listaProductos.get(position).getImage_url()).fit().error(R.mipmap.ic_launcher).into(holder.foto);
 
-        Log.d(TAG, "onBindViewHolder: nombre> " + holder.txtNombre.getText().toString());
-
-        // Glide.with(context)
-        //Agregado para control de Exepciones.....................................................vvvvvvvvvv
-        String url1 = "/";
-        String url = "https:"+"url1"+"/www.gettyimages.es/ilustraciones/se%C3%B1al-de-no-consumir-bebidas";
-        if (listaProductos.get(position).getImage_url()==""){
-            Picasso.with(context).load(url).fit().error(R.mipmap.ic_launcher).into(holder.foto);
-        }
-        else {
-            Picasso.with(context).load(listaProductos.get(position).getImage_url()).fit().error(R.mipmap.ic_launcher).into(holder.foto);
-        }
 
         holder.meEncanta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                int flag = 0;
                 String clave = listaProductos.get(position).getNombre();//clave sharedpreferences
 
                 //region INSTANCIA SHAREDPREFERENCES
@@ -120,6 +108,8 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
                         editor.putString(clave,valorConjunto);
                         editor.commit();
                         Toast.makeText(context, "Agregado a favoritos!!", Toast.LENGTH_SHORT).show();
+
+
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -132,48 +122,27 @@ public class CategoriasProductoDetalle extends RecyclerView.Adapter<CategoriasPr
                         Utilidades utilidades = new Utilidades();
 
                         String cadena = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES,"");
-                        flag = 0 ;
-                       String[] sharedList =  utilidades.separar(cadena);
-                       // String cadena1 = cadena.replace(clave,"");
-                        //flag = 0;
-                        //editor.remove(Utilidades.SHARED_LIST_NAMES);
-                        //editor.commit();
-                        //String cadenaPrueba1 = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES,"");
-                       /* flag = 0;
-                        editor.putString(Utilidades.SHARED_LIST_NAMES, cadena1);
-                        flag = 0;
-                        String cadenaPrueba = sharedPreferences.getString(Utilidades.SHARED_LIST_NAMES, "");
-                        flag = 0;*/
 
+                       String[] sharedList =  utilidades.separar(cadena);
 
                         String nuevoShared = "";
                         for (String i:sharedList) {
-                            String s = i;
-                            flag = 0;
-                            if (i.equals(clave)){
-                                i = "";
-                                flag = 0;
-                            }else{
-                                nuevoShared += i+",";
-                                flag = 0;
-                            }
-                           // nuevoShared += i;
-
+                            if (i.equals(clave))i = "";
+                            else nuevoShared += i+",";
                         }
 
                         editor.remove(Utilidades.SHARED_LIST_NAMES);
-                        flag = 0;
-                        editor.commit();
-                        flag = 0 ;
-                        editor.putString(Utilidades.SHARED_LIST_NAMES,nuevoShared);
-                        flag = 0;
 
+                        editor.commit();
+                        editor.putString(Utilidades.SHARED_LIST_NAMES,nuevoShared);
 
                         editor.remove(clave);
-                        flag = 0;
                         editor.commit();
-                        flag = 0 ;
+                        view.setVisibility(View.INVISIBLE);
                         Toast.makeText(context, "Eliminado de Favoritos!", Toast.LENGTH_SHORT).show();
+
+
+                        notifyDataSetChanged();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
