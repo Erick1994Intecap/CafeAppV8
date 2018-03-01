@@ -15,7 +15,7 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, int puntos, int DPI) {
+    public Usuario(String nombre, String apellido, int puntos, long DPI) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.puntos = puntos;
