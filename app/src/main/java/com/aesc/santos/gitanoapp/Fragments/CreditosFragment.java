@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -43,7 +44,7 @@ public class CreditosFragment extends Fragment {
             "http://adrax.hol.es/fotos_programadores/DF7k3gdXkAIoi4N.jpg",
             "http://adrax.hol.es/fotos_programadores/fotojoshua.PNG",
             "http://adrax.hol.es/fotos_programadores/2018-03-01%2002.21.59%201.jpg",
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVOabEoexYzMlNBwZyKXdyt3AByAlUQzX8tsvPT4gteySy08QaDw"
+            "http://adrax.hol.es/fotos_programadores/IMG_20180106_192427_955.jpg"
     };
 
     private final String puestos[] = {
@@ -107,7 +108,7 @@ public class CreditosFragment extends Fragment {
         creditosArrayList = new ArrayList<>();
 
         rvAboutUs = view.findViewById(R.id.rvabout);
-        rvAboutUs.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvAboutUs.setLayoutManager(new GridLayoutManager(getContext(),2));
 
 
         final ArrayList creditos = prepareData();

@@ -10,6 +10,7 @@
     app:cardCornerRadius="10dp">
 
     <RelativeLayout
+        android:background="@drawable/degratitions_creditos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -21,28 +22,30 @@
             android:layout_width="100sp"
             android:layout_height="100sp"
             android:layout_marginTop="5sp"
-            android:src="@drawable/user" />
+            android:src="@drawable/user"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="1.5dp"/>
 
 
         <TextView
             android:id="@+id/txtNombreAbtUs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_below="@+id/crPhoto"
+            android:layout_centerHorizontal="true"
             android:text="Nombre"
-            android:textSize="20sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtPuesto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtNombreAbtUs"
-            android:layout_toEndOf="@+id/crPhoto"
-            android:layout_toRightOf="@+id/crPhoto"
-            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
             android:text="TextView"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
     </RelativeLayout>
 
