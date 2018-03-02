@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +50,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
     private static final String TAG = "LoginFragment";
     private EditText txtUsuario, txtPassword;
     private Button btnIngresar;
+    private ImageView mImagenLogo;
 
     RequestQueue mRequestQueue;
     JsonObjectRequest mJsonObject;
@@ -91,8 +94,9 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         txtPassword =  view.findViewById(R.id.etPassword);
         btnIngresar = view.findViewById(R.id.btnLogin);
         btnRegistrar = view.findViewById(R.id.registrar);
+        mImagenLogo = view.findViewById(R.id.imgLogo);
 
-
+        Picasso.with(getContext()).load(R.drawable.logo).resize(300,100).error(R.mipmap.ic_launcher).into(mImagenLogo);
 
         mRequestQueue = Volley.newRequestQueue(getContext());
 

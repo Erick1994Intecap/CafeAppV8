@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aesc.santos.gitanoapp.Entidades.VolleySingleton;
@@ -21,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +35,7 @@ public class RegistrarFragment extends Fragment {
     StringRequest stringRequest;
     EditText dpi, nombre, apellido, fecha, correo, telefono, pass;
     Button guardar;
+    private ImageView mImagenLogo;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -77,13 +80,20 @@ public class RegistrarFragment extends Fragment {
         correo = view.findViewById(R.id.txtCorreo);
         telefono = view.findViewById(R.id.txtTelefono);
         pass = view.findViewById(R.id.txtContaseña);
+        mImagenLogo = view.findViewById(R.id.logoGitaneRegistrar);
 
+        Picasso.with(getContext()).load(R.drawable.logo).resize(300,100).error(R.mipmap.ic_launcher).into(mImagenLogo);
         guardar = view.findViewById(R.id.btnGuardar);
 
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cargarWebService();
+
+                if ((dpi.length() != 0) && (nombre.length() != 0) && (apellido.length() != 0) && (fecha.length() != 0) && (correo.length() != 0) && (telefono.length() != 0) && (pass.length() != 0)){
+                    cargarWebService();
+                }else {
+                    Toast.makeText(getActivity(), "Datos incompletos", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;

@@ -1,5 +1,7 @@
 package com.aesc.santos.gitanoapp;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -53,6 +55,8 @@ public class BodyActivity extends AppCompatActivity implements
     ProductoDetalleFragment mProductoDetalleFragment;
     PuntosFragment mPuntosFragment;
 
+    private final int REQUEST_ACCESS_FINE = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +80,16 @@ public class BodyActivity extends AppCompatActivity implements
 
         if (valDPI == 35968745 || valDPI == 0) {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+        }
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},REQUEST_ACCESS_FINE);
+        }
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE},REQUEST_ACCESS_FINE);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

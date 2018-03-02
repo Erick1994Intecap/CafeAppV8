@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -28,6 +29,7 @@ import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.squareup.picasso.Picasso;
 
+import java.security.Permissions;
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -78,7 +80,6 @@ public class PuntosFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_puntos, container, false);
 
-
         codigoBarras=view.findViewById(R.id.imgCodUser);
         nombre = view.findViewById(R.id.tvNameUser);
         estrellas = view.findViewById(R.id.tvTotalEstrellas);
@@ -122,51 +123,6 @@ public class PuntosFragment extends Fragment {
             codigoBarras.setImageBitmap(bitmap);
         } catch (WriterException e) {
             e.printStackTrace();
-        }
-    }
-
-    /**
-     * verify all the permissions passed to the array
-     * @param permissions
-     */
-    public void verifyPermissions(String[] permissions) {
-        Log.d(TAG, "verifyPermissions: verifing permissions");
-        ActivityCompat.requestPermissions(getActivity(),permissions,VERIFY_PERMISSIONS_REQUEST);
-    }
-
-    /**
-     * check an array of permissions
-     * @param permissions
-     * @return
-     */
-    public boolean checkPermissionArray(String[] permissions) {
-        Log.d(TAG, "checkPermissionArray: checking  permissions array.");
-
-        for (int i = 0; i< permissions.length; i++){
-            String check = permissions[i];
-            if (!checkPermissions(check)){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * check a single permission is it has been verified
-     * @param permission
-     * @return
-     */
-    public boolean checkPermissions(String permission) {
-        Log.d(TAG, "checkPermissions: checking permission: " + permission);
-
-        int permissionRequest = ActivityCompat.checkSelfPermission(getActivity(), permission);
-
-        if (permissionRequest != PackageManager.PERMISSION_GRANTED){
-            Log.d(TAG, "checkPermissions: \n Permission was not granted for: " + permission);
-            return false;
-        }else{
-            Log.d(TAG, "checkPermissions: \n Permission was granted for: " + permission);
-            return true;
         }
     }
 
