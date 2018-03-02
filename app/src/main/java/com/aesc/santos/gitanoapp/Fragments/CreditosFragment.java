@@ -41,7 +41,7 @@ public class CreditosFragment extends Fragment {
     private final String url_photo[] = {
             "http://adrax.hol.es/fotos_programadores/IMG_20171231_071822_639.jpg",
             "http://adrax.hol.es/fotos_programadores/2018-03-01%2002.24.02%201.jpg",
-            "http://adrax.hol.es/fotos_programadores/DF7k3gdXkAIoi4N.jpg",
+            "http://adrax.hol.es/fotos_programadores/user.jpg",
             "http://adrax.hol.es/fotos_programadores/fotojoshua.PNG",
             "http://adrax.hol.es/fotos_programadores/2018-03-01%2002.21.59%201.jpg",
             "http://adrax.hol.es/fotos_programadores/IMG_20180106_192427_955.jpg"
