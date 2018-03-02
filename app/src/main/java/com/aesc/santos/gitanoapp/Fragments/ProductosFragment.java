@@ -156,7 +156,7 @@ public class ProductosFragment extends Fragment implements Response.ErrorListene
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(activity, "No se pudo conectar " + error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity, "Datos no disponibles", Toast.LENGTH_SHORT).show();
         System.out.println();
         Log.d(TAG, "onErrorResponse: " + error.toString());
     }
@@ -193,7 +193,7 @@ public class ProductosFragment extends Fragment implements Response.ErrorListene
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(activity, "Error al momento de cargar las Categorias.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Datos no disponibles", Toast.LENGTH_SHORT).show();
         }
     }
 

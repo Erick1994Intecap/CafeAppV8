@@ -149,7 +149,7 @@ public class ProductoDetalleFragment extends Fragment implements Response.Listen
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getActivity(), "No se pudo conectar " + error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Datos no disponibles", Toast.LENGTH_SHORT).show();
         System.out.println();
         Log.d(TAG, "onErrorResponse: " + error.toString());
     }
@@ -180,7 +180,7 @@ public class ProductoDetalleFragment extends Fragment implements Response.Listen
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(getActivity(), "Error al momento de cargar las Categorias.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Datos no disponibles", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -192,16 +192,6 @@ public class ProductoDetalleFragment extends Fragment implements Response.Listen
         }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

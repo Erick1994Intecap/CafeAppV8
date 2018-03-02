@@ -77,6 +77,8 @@ public class PuntosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_puntos, container, false);
+
+
         codigoBarras=view.findViewById(R.id.imgCodUser);
         nombre = view.findViewById(R.id.tvNameUser);
         estrellas = view.findViewById(R.id.tvTotalEstrellas);

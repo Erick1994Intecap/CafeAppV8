@@ -141,7 +141,7 @@ public class PromocionesFragment extends Fragment implements Response.ErrorListe
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getContext(), "No se pudo conectar " + error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Datos no disponibles", Toast.LENGTH_SHORT).show();
         System.out.println();
         //Log.d(TAG, "onErrorResponse: " + error.toString());
     }
@@ -173,7 +173,7 @@ public class PromocionesFragment extends Fragment implements Response.ErrorListe
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(getActivity(), "Error al momento de cargar las Categorias.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Datos no disponibles", Toast.LENGTH_SHORT).show();
         }
     }
 

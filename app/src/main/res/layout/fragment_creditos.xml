@@ -41,7 +41,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/crPhoto"
                     android:layout_centerHorizontal="true"
-                    android:text="Desarrallador de Aplicaciones Mobiles"
+                    android:textAlignment="center"
+                    android:text="@string/desarrallador_de_aplicaciones_m_viles"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
